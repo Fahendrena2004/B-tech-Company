@@ -1,69 +1,105 @@
+import React from "react";
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Hero } from "@/components/hero";
+import { ServiceCard } from "@/components/service-card";
+import { WhyUs } from "@/components/why-us";
+import { ProcessSection } from "@/components/process-section";
+import { CTASection } from "@/components/cta-section";
+import { servicesData } from "@/data/services";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex flex-col w-full">
+      {/* 1. Hero Section */}
+      <Hero />
+
+      {/* 2. Services Section */}
+      <section className="relative py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-cyan-500/20">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Nos Domaines d&apos;Expertise</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Nos <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Services</span>
+          </h2>
+          <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-300">
+            B-Tech Company propose un éventail complet de prestations technologiques pour répondre aux exigences numériques des entreprises et particuliers.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Services Grid (6 cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {servicesData.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
         </div>
-      </main>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-zinc-900 border border-blue-200 dark:border-white/10 hover:bg-blue-100 dark:hover:bg-zinc-800 transition-colors"
+          >
+            <span>Voir le détail de tous nos services</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 3. Pourquoi B-Tech Section */}
+      <WhyUs />
+
+      {/* 4. Quick Showcase / Brand Identity highlight */}
+      <section className="py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="rounded-3xl p-8 sm:p-12 bg-white/60 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 backdrop-blur-md">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-4 relative aspect-video sm:aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-md">
+              <Image
+                src="/images/services.jpeg"
+                alt="Conception graphique et applications chez B-Tech"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="lg:col-span-8 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400">
+                Identité & Vision
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                Une synergie entre précision technique et créativité visuelle
+              </h3>
+              <p className="text-slate-600 dark:text-zinc-300 leading-relaxed text-sm sm:text-base">
+                Chez B-Tech Company, nous combinons le meilleur de l&apos;ingénierie logicielle (Next.js, Laravel, architecture propre) avec un sens aigu du design graphique et de l&apos;ergonomie utilisateur. Chaque projet bénéficie d&apos;une attention personnalisée pour maximiser son impact.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-2">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-cyan-400 hover:underline"
+                >
+                  <span>En savoir plus sur notre entreprise</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/technologies"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
+                >
+                  <span>Découvrir notre stack technologique</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Process Section (Notre méthode de travail) */}
+      <ProcessSection />
+
+      {/* 6. CTA Section */}
+      <CTASection />
     </div>
   );
 }
