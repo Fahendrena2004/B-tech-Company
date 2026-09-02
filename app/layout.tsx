@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -91,6 +92,7 @@ export default function RootLayout({
           <Navbar />
           <div className="flex-1 flex flex-col">{children}</div>
           <Footer />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

@@ -23,4 +23,3 @@ export const contactData: ContactInfo = {
     github: "https://github.com"
   }
 };
-
