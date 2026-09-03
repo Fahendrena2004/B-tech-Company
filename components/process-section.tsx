@@ -51,7 +51,7 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group relative rounded-2xl p-7 bg-white/80 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-white/10 hover:border-cyan-500/40 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between"
+                className="group relative rounded-[28px] p-7 bg-white/80 dark:bg-zinc-900/70 border border-slate-200/80 dark:border-white/10 hover:border-cyan-500/40 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between"
               >
                 {/* Step number badge & icon */}
                 <div>
@@ -59,7 +59,7 @@ export function ProcessSection() {
                     <span className="text-3xl font-black tracking-tight text-blue-600/30 dark:text-cyan-400/30 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
                       {step.step}
                     </span>
-                    <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800/80 border border-blue-200/60 dark:border-white/10 text-blue-600 dark:text-cyan-400 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                    <div className="w-11 h-11 rounded-[24px] bg-blue-50 dark:bg-zinc-800/80 border border-blue-200/60 dark:border-white/10 text-blue-600 dark:text-cyan-400 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>

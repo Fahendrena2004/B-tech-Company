@@ -24,7 +24,7 @@ export function WhatsAppButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="mb-3 w-72 sm:w-80 p-4 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 shadow-2xl backdrop-blur-md text-slate-800 dark:text-white"
+            className="mb-3 w-72 sm:w-80 p-4 rounded-[28px] bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 shadow-2xl backdrop-blur-md text-slate-800 dark:text-white"
           >
             <div className="flex items-start justify-between pb-3 border-b border-slate-100 dark:border-white/10">
               <div className="flex items-center gap-2.5">
@@ -59,7 +59,7 @@ export function WhatsAppButton() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs transition-colors shadow-md shadow-emerald-500/20"
+              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[24px] bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs transition-colors shadow-md shadow-emerald-500/20"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Démarrer la discussion</span>

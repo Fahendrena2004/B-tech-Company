@@ -11,15 +11,21 @@ import { ThemeToggle } from "./theme-toggle";
 interface NavLink {
   label: string;
   href: string;
+  subLinks?: { label: string; href: string }[];
 }
 
 const navLinks: NavLink[] = [
   { label: "Accueil", href: "/" },
-  { label: "À propos", href: "/about" },
+  { 
+    label: "À propos", 
+    href: "/about",
+    subLinks: [
+      { label: "Notre Équipe", href: "/team" },
+      { label: "Technologies", href: "/technologies" }
+    ]
+  },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Technologies", href: "/technologies" },
-  { label: "Équipe", href: "/team" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -58,10 +64,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-sm"
-          : "bg-transparent border-b border-transparent"
+          ? "bg-[#FFFDF9] border-b border-[#F2E9D6] shadow-sm"
+          : "bg-[#FFFDF9] border-b border-[#F2E9D6]/60"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +77,7 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-3 group transition-transform duration-200 hover:scale-[1.02] focus:outline-none shrink-0"
           >
-            <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600/10 via-cyan-500/10 to-indigo-600/10 dark:from-blue-500/20 dark:to-cyan-400/20 border border-blue-500/20 dark:border-cyan-400/30 flex items-center justify-center p-1 shadow-xs overflow-hidden">
+            <div className="relative w-11 h-11 rounded-[24px] bg-gradient-to-br from-blue-600/10 via-cyan-500/10 to-indigo-600/10 dark:from-blue-500/20 dark:to-cyan-400/20 border border-blue-500/20 dark:border-cyan-400/30 flex items-center justify-center p-1 shadow-xs overflow-hidden">
               <Image
                 src="/images/logoBtechcompany-removebg-preview.png"
                 alt="B-Tech Company Logo"
@@ -94,26 +100,40 @@ export function Navbar() {
           {/* Desktop Navigation Links (>= lg) */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || link.subLinks?.some(sub => pathname === sub.href);
               return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                    isActive
-                      ? "text-blue-600 dark:text-cyan-400 font-semibold"
-                      : "text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-white/5"
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
+                <div key={link.href} className="relative group">
+                  <Link
+                    href={link.href}
+                    className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 inline-block ${
+                      isActive
+                        ? "text-[#38BDF8] font-semibold"
+                        : "text-[#0F2747] hover:text-[#38BDF8]"
+                    }`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeNavIndicator"
+                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#38BDF8] rounded-full"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                  {link.subLinks && (
+                    <div className="absolute top-full left-0 mt-1 w-48 py-2 bg-white dark:bg-zinc-950 border border-slate-200 dark:border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      {link.subLinks.map(sub => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className={`block px-4 py-2 text-sm ${pathname === sub.href ? "text-blue-600 dark:text-cyan-400 font-semibold bg-blue-50/50 dark:bg-blue-950/20" : "text-slate-600 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5"}`}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
                   )}
-                </Link>
+                </div>
               );
             })}
           </nav>
@@ -123,7 +143,7 @@ export function Navbar() {
             <ThemeToggle />
             <Link
               href="/devis"
-              className="relative inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0"
+              className="relative inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[24px] text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0"
             >
               <Sparkles className="w-3.5 h-3.5 text-cyan-200 animate-pulse" />
               <span>Demander un devis</span>
@@ -137,7 +157,7 @@ export function Navbar() {
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 text-slate-700 dark:text-zinc-200 hover:text-blue-600 dark:hover:text-cyan-400 focus:outline-none cursor-pointer"
+              className="p-2.5 rounded-[24px] border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-zinc-900/80 text-slate-700 dark:text-zinc-200 hover:text-blue-600 dark:hover:text-cyan-400 focus:outline-none cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -159,19 +179,39 @@ export function Navbar() {
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                      isActive
-                        ? "bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-cyan-400 font-semibold"
-                        : "text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-white/5"
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400" />}
-                  </Link>
+                  <div key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`flex items-center justify-between px-4 py-3 rounded-[24px] text-base font-medium transition-colors ${
+                        isActive
+                          ? "bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-cyan-400 font-semibold"
+                          : "text-slate-700 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-white/5"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-cyan-400" />}
+                    </Link>
+                    {link.subLinks && (
+                      <div className="pl-6 pr-4 py-1 space-y-1">
+                        {link.subLinks.map(sub => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={`flex items-center justify-between px-4 py-2 rounded-[24px] text-sm transition-colors ${
+                              pathname === sub.href
+                                ? "text-blue-600 dark:text-cyan-400 font-semibold bg-blue-50/50 dark:bg-blue-950/20"
+                                : "text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-white/5"
+                            }`}
+                          >
+                            <span>{sub.label}</span>
+                            {pathname === sub.href && <div className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-cyan-400" />}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
 
@@ -179,7 +219,7 @@ export function Navbar() {
                 <Link
                   href="/devis"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-[24px] text-base font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20"
                 >
                   <Sparkles className="w-4 h-4 text-cyan-200" />
                   <span>Demander un devis</span>

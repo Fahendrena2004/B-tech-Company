@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FolderGit2,
   Clock,
@@ -36,7 +37,7 @@ export default function PortfolioPage() {
               Notre <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Portfolio</span>
             </h1>
             <p className="text-lg text-slate-600 dark:text-zinc-300 leading-relaxed">
-              Explorez les types de solutions que nous développons. Notre espace portfolio est prêt à accueillir nos prochaines réalisations officielles.
+              Découvrez nos réalisations, allant du développement web et mobile jusqu'à nos créations uniques en design et décoration.
             </p>
           </div>
         </div>
@@ -44,7 +45,7 @@ export default function PortfolioPage() {
 
       {/* Category Tabs Filter */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 max-w-md mx-auto mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-[28px] bg-slate-100/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 max-w-xl mx-auto mb-12">
           {portfolioCategories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -52,7 +53,7 @@ export default function PortfolioPage() {
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-[24px] text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-white dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 shadow-sm border border-slate-200/60 dark:border-white/10"
                     : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
@@ -64,39 +65,44 @@ export default function PortfolioPage() {
           })}
         </div>
 
-        {/* Informative Notice Badge */}
-        <div className="max-w-2xl mx-auto mb-10 p-4 rounded-2xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/70 dark:border-cyan-500/20 text-center text-xs sm:text-sm text-slate-600 dark:text-zinc-300">
-          <p>
-            ✨ <strong>Espace de démonstration :</strong> Cette section est configurée pour recevoir les projets et études de cas réels de B-Tech Company au fur et à mesure de leur déploiement.
-          </p>
-        </div>
-
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project) => {
+            const isDeco = project.category === "Décoration & Vaisselle";
+            return (
             <div
               key={project.id}
-              className="group relative rounded-2xl p-6 bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between overflow-hidden"
+              className={`group relative rounded-[28px] p-6 bg-white/70 dark:bg-zinc-900/60 border ${isDeco ? 'border-orange-200/80 dark:border-amber-700/30 hover:border-orange-400 dark:hover:border-amber-500/60 shadow-md shadow-orange-900/5' : 'border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40'} shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between overflow-hidden`}
             >
               <div>
-                {/* Visual Thumbnail Placeholder */}
+                {/* Visual Thumbnail */}
                 <div
-                  className={`relative aspect-video rounded-xl bg-gradient-to-br ${project.gradient} border border-slate-200/60 dark:border-white/5 flex flex-col items-center justify-center p-6 text-center mb-5 overflow-hidden`}
+                  className={`relative ${isDeco ? 'aspect-[4/5]' : 'aspect-video'} rounded-[24px] bg-gradient-to-br ${project.gradient} border border-slate-200/60 dark:border-white/5 flex flex-col items-center justify-center text-center mb-5 overflow-hidden group-hover:shadow-lg transition-all duration-500`}
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md flex items-center justify-center text-blue-600 dark:text-cyan-400 mb-3 shadow-md">
-                    <Layers className="w-6 h-6" />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                    {project.status}
-                  </span>
-                  <span className="text-[11px] text-slate-600 dark:text-zinc-300 mt-0.5">
-                    Structure de projet prête
-                  </span>
+                  {project.imageUrl ? (
+                    <Image 
+                      src={project.imageUrl} 
+                      alt={project.title} 
+                      fill 
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center p-6">
+                      <div className="w-12 h-12 rounded-[28px] bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md flex items-center justify-center text-blue-600 dark:text-cyan-400 mb-3 shadow-md">
+                        <Layers className="w-6 h-6" />
+                      </div>
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
+                        {project.status}
+                      </span>
+                    </div>
+                  )}
+                  {/* Subtle vignette/shadow over the image for text contrast if needed, or warm glow for Deco */}
+                  {isDeco && <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />}
                 </div>
 
                 {/* Category & Status */}
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className="text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-zinc-800 text-blue-700 dark:text-cyan-300 border border-blue-100 dark:border-white/10">
+                  <span className={`text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-full ${isDeco ? 'bg-orange-50 dark:bg-amber-900/30 text-orange-700 dark:text-amber-300 border border-orange-100 dark:border-amber-700/50' : 'bg-blue-50 dark:bg-zinc-800 text-blue-700 dark:text-cyan-300 border border-blue-100 dark:border-white/10'}`}>
                     {project.category}
                   </span>
                   <span className="text-xs text-slate-400 dark:text-zinc-500 flex items-center gap-1">
@@ -108,7 +114,7 @@ export default function PortfolioPage() {
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-xs font-medium text-blue-600 dark:text-cyan-400 mt-1">
+                <p className={`text-xs font-medium mt-1 ${isDeco ? 'text-orange-600 dark:text-amber-400' : 'text-blue-600 dark:text-cyan-400'}`}>
                   {project.tagline}
                 </p>
 
@@ -123,7 +129,7 @@ export default function PortfolioPage() {
                       key={idx}
                       className="text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1.5"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isDeco ? 'bg-orange-400' : 'bg-cyan-400'} shrink-0`} />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -145,21 +151,21 @@ export default function PortfolioPage() {
 
                 <Link
                   href="/devis"
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-800 dark:text-zinc-200 bg-slate-100 dark:bg-zinc-800/80 hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[24px] text-xs font-semibold text-slate-800 dark:text-zinc-200 bg-slate-100 dark:bg-zinc-800/80 hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 transition-colors"
                 >
                   <span>Créer un projet similaire</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </section>
 
       {/* CTA */}
       <CTASection
         title="Vous avez un projet en tête ?"
-        subtitle="Soyez parmi les premières entreprises à figurer dans nos réalisations phares !"
+        subtitle="Démarrez avec nous et bénéficiez d'un accompagnement complet de A à Z."
       />
     </div>
   );

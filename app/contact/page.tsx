@@ -62,9 +62,9 @@ export default function ContactPage() {
               {/* Email card */}
               <a
                 href={`mailto:${contactData.email}`}
-                className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-blue-500/40 dark:hover:border-cyan-400/40 transition-all group"
+                className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-blue-500/40 dark:hover:border-cyan-400/40 transition-all group"
               >
-                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 rounded-[24px] bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
@@ -88,9 +88,9 @@ export default function ContactPage() {
                 href={`https://wa.me/${cleanPhone}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-emerald-500/40 dark:hover:border-emerald-400/40 transition-all group"
+                className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-emerald-500/40 dark:hover:border-emerald-400/40 transition-all group"
               >
-                <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 rounded-[24px] bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
@@ -112,9 +112,9 @@ export default function ContactPage() {
               {/* Phone call card */}
               <a
                 href={`tel:${contactData.phone.replace(/\s+/g, "")}`}
-                className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-blue-500/40 dark:hover:border-cyan-400/40 transition-all group"
+                className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-blue-500/40 dark:hover:border-cyan-400/40 transition-all group"
               >
-                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <div className="w-11 h-11 rounded-[24px] bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
@@ -134,8 +134,8 @@ export default function ContactPage() {
               </a>
 
               {/* Location card */}
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+              <div className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
+                <div className="w-11 h-11 rounded-[24px] bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -149,8 +149,8 @@ export default function ContactPage() {
               </div>
 
               {/* Opening hours */}
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+              <div className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
+                <div className="w-11 h-11 rounded-[24px] bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
@@ -165,7 +165,7 @@ export default function ContactPage() {
             </div>
 
             {/* Social media links */}
-            <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-3">
+            <div className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-3">
               <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
                 Suivez-nous sur les réseaux
               </h3>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                   href={contactData.socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3 py-2 rounded-[24px] bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 text-xs font-medium transition-colors"
                 >
                   <FacebookIcon className="w-4 h-4 text-blue-600" />
                   <span>Facebook</span>
@@ -183,7 +183,7 @@ export default function ContactPage() {
                   href={contactData.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3 py-2 rounded-[24px] bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 text-xs font-medium transition-colors"
                 >
                   <LinkedinIcon className="w-4 h-4 text-blue-500" />
                   <span>LinkedIn</span>
@@ -192,7 +192,7 @@ export default function ContactPage() {
                   href={contactData.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3 py-2 rounded-[24px] bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-cyan-400 text-xs font-medium transition-colors"
                 >
                   <GithubIcon className="w-4 h-4 text-slate-800 dark:text-white" />
                   <span>GitHub</span>
@@ -201,7 +201,7 @@ export default function ContactPage() {
             </div>
 
             {/* Support Representative Visual */}
-            <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg">
+            <div className="relative rounded-[28px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-lg">
               <div className="relative aspect-[16/10]">
                 <Image
                   src="/images/contact.jpeg"

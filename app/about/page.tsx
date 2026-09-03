@@ -89,7 +89,7 @@ export default function AboutPage() {
 
             {/* Core Mission & Vision Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-2 shadow-xs">
+              <div className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-2 shadow-xs">
                 <div className="flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-bold">
                   <Target className="w-5 h-5" />
                   <span>Notre Mission</span>
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-2 shadow-xs">
+              <div className="p-5 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-2 shadow-xs">
                 <div className="flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-bold">
                   <Eye className="w-5 h-5" />
                   <span>Notre Vision</span>
@@ -113,8 +113,8 @@ export default function AboutPage() {
 
           {/* Right Image */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden p-2 bg-gradient-to-br from-blue-600/30 to-cyan-500/20 border border-slate-200 dark:border-white/10 shadow-2xl">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="relative rounded-[32px] overflow-hidden p-2 bg-gradient-to-br from-blue-600/30 to-cyan-500/20 border border-slate-200 dark:border-white/10 shadow-2xl">
+              <div className="relative aspect-[4/3] rounded-[28px] overflow-hidden">
                 <Image
                   src="/images/Apropos.jpeg"
                   alt="L'équipe de B-Tech Company au travail"
@@ -146,9 +146,9 @@ export default function AboutPage() {
               return (
                 <div
                   key={v.title}
-                  className="p-6 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-3 shadow-xs hover:border-blue-400 dark:hover:border-cyan-400/40 transition-all duration-200"
+                  className="p-6 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 space-y-3 shadow-xs hover:border-blue-400 dark:hover:border-cyan-400/40 transition-all duration-200"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-[24px] bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center">
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-base font-bold text-slate-900 dark:text-white">

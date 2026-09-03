@@ -120,7 +120,7 @@ export default function BlogPage() {
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-[24px] text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
                     : "bg-white dark:bg-zinc-800/80 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-zinc-300 hover:border-blue-400"
@@ -139,7 +139,7 @@ export default function BlogPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher un sujet..."
-              className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
+              className="w-full pl-10 pr-4 py-2 rounded-[24px] border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
             />
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function BlogPage() {
           {filteredArticles.map((article) => (
             <article
               key={article.id}
-              className="group rounded-3xl p-6 sm:p-8 bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="group rounded-[32px] p-6 sm:p-8 bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div className="space-y-4">
                 {/* Badge header */}
@@ -206,8 +206,8 @@ export default function BlogPage() {
 
       {/* Newsletter / Notification Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-16">
-        <div className="rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-blue-900/40 via-slate-900/60 to-cyan-950/40 border border-blue-500/20 dark:border-cyan-500/20 backdrop-blur-xl text-center space-y-5 shadow-2xl">
-          <div className="w-12 h-12 rounded-2xl bg-blue-600/20 border border-cyan-400/30 text-cyan-400 flex items-center justify-center mx-auto">
+        <div className="rounded-[32px] p-8 sm:p-12 bg-gradient-to-br from-blue-900/40 via-slate-900/60 to-cyan-950/40 border border-blue-500/20 dark:border-cyan-500/20 backdrop-blur-xl text-center space-y-5 shadow-2xl">
+          <div className="w-12 h-12 rounded-[28px] bg-blue-600/20 border border-cyan-400/30 text-cyan-400 flex items-center justify-center mx-auto">
             <Sparkles className="w-6 h-6" />
           </div>
 
@@ -221,7 +221,7 @@ export default function BlogPage() {
           </div>
 
           {subscribed ? (
-            <div className="inline-flex items-center gap-2 p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm font-semibold">
+            <div className="inline-flex items-center gap-2 p-3 rounded-[24px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-sm font-semibold">
               <CheckCircle2 className="w-5 h-5" />
               <span>Merci ! Vous recevrez une notification lors de la parution de nos premiers articles.</span>
             </div>
@@ -233,11 +233,11 @@ export default function BlogPage() {
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
                 placeholder="Votre adresse email professionnelle..."
-                className="w-full px-4 py-3 rounded-xl border border-white/15 bg-white/10 text-white text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
+                className="w-full px-4 py-3 rounded-[24px] border border-white/15 bg-white/10 text-white text-sm placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
               />
               <button
                 type="submit"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-md shadow-cyan-400/20 whitespace-nowrap cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-[24px] font-bold text-sm text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-md shadow-cyan-400/20 whitespace-nowrap cursor-pointer"
               >
                 S&apos;inscrire
               </button>

@@ -39,7 +39,20 @@ const whyUsPoints = [
 export function WhyUs() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden bg-slate-50/50 dark:bg-zinc-950/40 border-y border-slate-200/60 dark:border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[500px] h-[500px] bg-gradient-to-bl from-blue-500/10 to-transparent blur-[80px] rounded-full pointer-events-none" />
+      <div 
+        className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/10 to-transparent blur-[100px] pointer-events-none animate-spin" 
+        style={{ animationDuration: '50s', borderRadius: '60% 40% 50% 50% / 40% 50% 60% 50%' }} 
+      />
+      <div className="absolute top-20 left-10 text-cyan-400/30 animate-pulse pointer-events-none">
+        <Sparkles className="w-8 h-8" />
+      </div>
+      <div className="absolute bottom-40 right-20 text-blue-400/20 animate-bounce pointer-events-none" style={{ animationDuration: '3s' }}>
+        <Sparkles className="w-12 h-12" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-cyan-500/20">
@@ -66,9 +79,9 @@ export function WhyUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-500/40 shadow-xs hover:shadow-lg transition-all duration-300 space-y-3"
+                  className="p-6 rounded-[28px] bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-500/40 shadow-xs hover:shadow-lg transition-all duration-300 space-y-3"
                 >
-                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-md`}>
+                  <div className={`w-11 h-11 rounded-[24px] bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-md`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -84,8 +97,8 @@ export function WhyUs() {
 
           {/* Right Column: Visual Showcase (5 cols) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden p-2 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-transparent border border-slate-200 dark:border-white/10 shadow-xl">
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+            <div className="relative rounded-[28px] overflow-hidden p-2 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-transparent border border-slate-200 dark:border-white/10 shadow-xl">
+              <div className="relative aspect-[4/3] rounded-[24px] overflow-hidden">
                 <Image
                   src="/images/Apropos.jpeg"
                   alt="Équipe B-Tech Company analysant des interfaces"

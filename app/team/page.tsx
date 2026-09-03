@@ -39,7 +39,7 @@ export default function TeamPage() {
 
       {/* Team Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-20">
-        <div className="max-w-2xl mx-auto mb-10 p-4 rounded-2xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/70 dark:border-cyan-500/20 text-center text-xs sm:text-sm text-slate-600 dark:text-zinc-300">
+        <div className="max-w-2xl mx-auto mb-10 p-4 rounded-[28px] bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/70 dark:border-cyan-500/20 text-center text-xs sm:text-sm text-slate-600 dark:text-zinc-300">
           <p>
             ℹ️ <strong>Structure préconfigurée :</strong> Les fiches ci-dessous présentent les postes clés et compétences de l&apos;équipe. Les profils individuels seront mis à jour avec les informations nominatives officielles.
           </p>
@@ -49,11 +49,11 @@ export default function TeamPage() {
           {teamMembers.map((member) => (
             <div
               key={member.id}
-              className="group relative rounded-2xl p-6 bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between"
+              className="group relative rounded-[28px] p-6 bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between"
             >
               <div>
                 {/* Photo Placeholder */}
-                <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-blue-600/10 via-cyan-500/10 to-indigo-600/10 dark:from-blue-500/20 dark:to-cyan-400/20 border border-blue-200/60 dark:border-white/10 flex flex-col items-center justify-center p-6 text-center mb-5 group-hover:scale-[1.02] transition-transform duration-300 overflow-hidden">
+                <div className="relative aspect-square rounded-[28px] bg-gradient-to-br from-blue-600/10 via-cyan-500/10 to-indigo-600/10 dark:from-blue-500/20 dark:to-cyan-400/20 border border-blue-200/60 dark:border-white/10 flex flex-col items-center justify-center p-6 text-center mb-5 group-hover:scale-[1.02] transition-transform duration-300 overflow-hidden">
                   <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shadow-inner mb-2">
                     <User className="w-8 h-8" />
                   </div>
@@ -120,7 +120,7 @@ export default function TeamPage() {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-[24px] font-semibold text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors"
             >
               <span>Contacter l&apos;équipe</span>
               <ArrowRight className="w-4 h-4" />

@@ -73,7 +73,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-3xl p-6 sm:p-10 bg-white/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl backdrop-blur-md">
+    <div className="rounded-[32px] p-6 sm:p-10 bg-white/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 shadow-xl backdrop-blur-md">
       {status === "success" ? (
         <div className="py-10 text-center space-y-4">
           <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-md">
@@ -89,7 +89,7 @@ export function ContactForm() {
             <button
               type="button"
               onClick={() => setStatus("idle")}
-              className="px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors"
+              className="px-6 py-2.5 rounded-[24px] font-semibold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors"
             >
               Envoyer un autre message
             </button>
@@ -97,7 +97,7 @@ export function ContactForm() {
               href={`https://wa.me/${contactData.whatsapp.replace(/[^0-9]/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[24px] font-semibold text-xs sm:text-sm text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
             >
               <MessageCircle className="w-4 h-4 text-emerald-500" />
               <span>Contacter sur WhatsApp</span>
@@ -107,7 +107,7 @@ export function ContactForm() {
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           {status === "error" && (
-            <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-center gap-3 text-red-700 dark:text-red-300 text-sm">
+            <div className="p-4 rounded-[24px] bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-center gap-3 text-red-700 dark:text-red-300 text-sm">
               <AlertCircle className="w-5 h-5 shrink-0" />
               <span>Une erreur est survenue lors de l&apos;envoi. Veuillez réessayer.</span>
             </div>
@@ -125,7 +125,7 @@ export function ContactForm() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Ex: Jean Dupont"
-                className={`w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors ${
+                className={`w-full px-4 py-3 rounded-[24px] border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors ${
                   errors.name
                     ? "border-red-500 focus:border-red-500"
                     : "border-slate-200 dark:border-white/10 focus:border-blue-500 dark:focus:border-cyan-400"
@@ -145,7 +145,7 @@ export function ContactForm() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="Ex: jean.dupont@example.com"
-                className={`w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors ${
+                className={`w-full px-4 py-3 rounded-[24px] border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors ${
                   errors.email
                     ? "border-red-500 focus:border-red-500"
                     : "border-slate-200 dark:border-white/10 focus:border-blue-500 dark:focus:border-cyan-400"
@@ -167,7 +167,7 @@ export function ContactForm() {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="Ex: +261 34 00 000 00"
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
+                className="w-full px-4 py-3 rounded-[24px] border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400"
               />
             </div>
 
@@ -180,7 +180,7 @@ export function ContactForm() {
                 id="contact-project-type"
                 value={formData.projectType}
                 onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 cursor-pointer"
+                className="w-full px-4 py-3 rounded-[24px] border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 cursor-pointer"
               >
                 <option value="Développement Web">Développement d&apos;application Web</option>
                 <option value="Développement Mobile">Développement Mobile (iOS/Android)</option>
@@ -204,7 +204,7 @@ export function ContactForm() {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder="Décrivez brièvement votre projet ou votre question..."
-              className={`w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors resize-y ${
+              className={`w-full px-4 py-3 rounded-[24px] border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors resize-y ${
                 errors.message
                   ? "border-red-500 focus:border-red-500"
                   : "border-slate-200 dark:border-white/10 focus:border-blue-500 dark:focus:border-cyan-400"
@@ -218,7 +218,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 disabled:opacity-50 transition-all cursor-pointer text-sm"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-[24px] font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 disabled:opacity-50 transition-all cursor-pointer text-sm"
             >
               {status === "loading" ? (
                 <>
@@ -236,7 +236,7 @@ export function ContactForm() {
             <button
               type="button"
               onClick={handleWhatsAppDirect}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs transition-all cursor-pointer text-sm"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[24px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs transition-all cursor-pointer text-sm"
             >
               <MessageCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Transmettre via WhatsApp</span>

@@ -48,7 +48,7 @@ export default function ServicesPage() {
       <section className="py-16 bg-slate-50/50 dark:bg-zinc-950/40 border-y border-slate-200/60 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-xl">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-[28px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-xl">
               <Image
                 src="/images/services.jpeg"
                 alt="Conception et développement de solutions chez B-Tech"
@@ -82,7 +82,7 @@ export default function ServicesPage() {
               <div className="pt-4">
                 <Link
                   href="/devis"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-500 transition-colors text-sm shadow-md"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-[24px] font-bold text-white bg-blue-600 hover:bg-blue-500 transition-colors text-sm shadow-md"
                 >
                   <span>Demander un devis pour votre projet</span>
                   <ArrowRight className="w-4 h-4" />

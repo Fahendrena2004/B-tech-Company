@@ -40,7 +40,7 @@ export default function HomePage() {
         <div className="text-center mt-12">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-zinc-900 border border-blue-200 dark:border-white/10 hover:bg-blue-100 dark:hover:bg-zinc-800 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-[24px] font-semibold text-sm text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-zinc-900 border border-blue-200 dark:border-white/10 hover:bg-blue-100 dark:hover:bg-zinc-800 transition-colors"
           >
             <span>Voir le détail de tous nos services</span>
             <ArrowRight className="w-4 h-4" />
@@ -53,9 +53,9 @@ export default function HomePage() {
 
       {/* 4. Quick Showcase / Brand Identity highlight */}
       <section className="py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="rounded-3xl p-8 sm:p-12 bg-white/60 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 backdrop-blur-md">
+        <div className="rounded-[32px] p-8 sm:p-12 bg-white/60 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 backdrop-blur-md">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-4 relative aspect-video sm:aspect-square lg:aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-md">
+            <div className="lg:col-span-4 relative aspect-video sm:aspect-square lg:aspect-[4/3] rounded-[28px] overflow-hidden border border-slate-200 dark:border-white/10 shadow-md">
               <Image
                 src="/images/services.jpeg"
                 alt="Conception graphique et applications chez B-Tech"

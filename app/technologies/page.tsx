@@ -72,7 +72,7 @@ export default function TechnologiesPage() {
 
       {/* Category Tabs */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 max-w-2xl mx-auto mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-[28px] bg-slate-100/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 max-w-2xl mx-auto mb-12">
           {techCategories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -80,7 +80,7 @@ export default function TechnologiesPage() {
                 key={cat}
                 type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-[24px] text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-white dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 shadow-sm border border-slate-200/60 dark:border-white/10"
                     : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white"
@@ -97,11 +97,11 @@ export default function TechnologiesPage() {
           {filteredTechnologies.map((tech) => (
             <div
               key={tech.name}
-              className="p-6 rounded-2xl bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-lg transition-all duration-300 space-y-4 flex flex-col justify-between"
+              className="p-6 rounded-[28px] bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-lg transition-all duration-300 space-y-4 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center border border-blue-100 dark:border-white/5">
+                  <div className="w-12 h-12 rounded-[24px] bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center border border-blue-100 dark:border-white/5">
                     <TechIconRenderer iconName={tech.iconName} />
                   </div>
                   <span className="text-[11px] font-semibold uppercase px-2.5 py-1 rounded-full bg-blue-50 dark:bg-white/5 text-blue-700 dark:text-cyan-300 border border-blue-100 dark:border-white/10">
@@ -139,7 +139,7 @@ export default function TechnologiesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="p-6 space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-[28px] bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
                 <Sparkles className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -151,7 +151,7 @@ export default function TechnologiesPage() {
             </div>
 
             <div className="p-6 space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-[28px] bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -163,7 +163,7 @@ export default function TechnologiesPage() {
             </div>
 
             <div className="p-6 space-y-3">
-              <div className="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-[28px] bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 flex items-center justify-center mx-auto">
                 <Cpu className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">

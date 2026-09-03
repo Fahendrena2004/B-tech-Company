@@ -30,7 +30,7 @@ export function Footer() {
           {/* Column 1: Brand & Pitch (2 cols on lg) */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 border border-cyan-400/30 flex items-center justify-center p-1">
+              <div className="relative w-10 h-10 rounded-[24px] bg-gradient-to-br from-blue-500/20 to-cyan-400/20 border border-cyan-400/30 flex items-center justify-center p-1">
                 <Image
                   src="/images/logoBtechcompany-removebg-preview.png"
                   alt="B-Tech Company Logo"

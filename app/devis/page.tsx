@@ -35,7 +35,7 @@ export default function DevisPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Guarantees & Summary (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 rounded-2xl bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 space-y-4 shadow-xs">
+            <div className="p-6 rounded-[28px] bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 space-y-4 shadow-xs">
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                 Pourquoi demander un devis ?
               </h3>
@@ -59,7 +59,7 @@ export default function DevisPage() {
               </ul>
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-900/40 to-cyan-900/20 border border-blue-500/20 text-slate-300 space-y-2 text-xs leading-relaxed">
+            <div className="p-6 rounded-[28px] bg-gradient-to-br from-blue-900/40 to-cyan-900/20 border border-blue-500/20 text-slate-300 space-y-2 text-xs leading-relaxed">
               <p className="font-bold text-white text-sm">
                 Besoin d&apos;un échange direct avant de remplir ?
               </p>

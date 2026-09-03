@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Baloo_2, Nunito, Caveat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
@@ -6,6 +7,21 @@ import { Footer } from "@/components/footer";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { contactData } from "@/data/contact";
+
+const baloo = Baloo_2({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-script",
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -117,7 +133,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-background text-foreground selection:bg-blue-600 selection:text-white transition-colors duration-200">
+      <body className={`min-h-full flex flex-col font-sans bg-background text-foreground selection:bg-blue-600 selection:text-white transition-colors duration-200 ${baloo.variable} ${nunito.variable} ${caveat.variable}`}>
         <ThemeProvider defaultTheme="dark">
           <Navbar />
           <div className="flex-1 flex flex-col">{children}</div>
