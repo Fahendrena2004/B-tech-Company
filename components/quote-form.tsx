@@ -9,7 +9,9 @@ import {
   Loader2,
   Calendar,
   Wallet,
+  MessageCircle,
 } from "lucide-react";
+import { contactData } from "@/data/contact";
 
 interface QuoteState {
   fullName: string;
@@ -86,6 +88,23 @@ export function QuoteForm({ initialProjectType }: { initialProjectType?: string 
     return Object.keys(errs).length === 0;
   };
 
+  const handleWhatsAppQuote = () => {
+    if (!validate()) return;
+    const cleanPhone = contactData.whatsapp.replace(/[^0-9]/g, "");
+    const text = encodeURIComponent(
+      `*Demande de Devis — B-Tech Company*\n\n` +
+      `📋 *Type de projet* : ${formData.projectType}\n` +
+      `👤 *Client* : ${formData.fullName}\n` +
+      `📧 *Email* : ${formData.email}\n` +
+      `📞 *Téléphone* : ${formData.phone}\n` +
+      `🏢 *Entreprise* : ${formData.company || "Non renseigné"}\n` +
+      `💰 *Budget* : ${formData.budgetRange}\n` +
+      `⏱️ *Délai souhaité* : ${formData.deadline}\n\n` +
+      `📝 *Description du projet* :\n${formData.description}`
+    );
+    window.open(`https://wa.me/${cleanPhone}?text=${text}`, "_blank");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
@@ -114,13 +133,24 @@ export function QuoteForm({ initialProjectType }: { initialProjectType?: string 
           <p className="text-base text-slate-600 dark:text-zinc-300 max-w-lg mx-auto leading-relaxed">
             Nous avons bien reçu vos spécifications. Un chargé de projet B-Tech Company étudiera votre cahier des charges et vous transmettra une estimation chiffrée sous 24 à 48 heures.
           </p>
-          <button
-            type="button"
-            onClick={() => setStatus("idle")}
-            className="px-8 py-3 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors shadow-md"
-          >
-            Faire une autre demande
-          </button>
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setStatus("idle")}
+              className="px-8 py-3 rounded-xl font-bold text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors shadow-md"
+            >
+              Faire une autre demande
+            </button>
+            <a
+              href={`https://wa.me/${contactData.whatsapp.replace(/[^0-9]/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-500" />
+              <span>Suivre sur WhatsApp</span>
+            </a>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-8" noValidate>
@@ -310,23 +340,32 @@ export function QuoteForm({ initialProjectType }: { initialProjectType?: string 
           </div>
 
           {/* Submit */}
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/25 disabled:opacity-50 transition-all cursor-pointer text-base"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/25 disabled:opacity-50 transition-all cursor-pointer text-sm sm:text-base"
             >
               {status === "loading" ? (
                 <>
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  <span>Calcul et transmission de votre demande...</span>
+                  <span>Calcul et transmission...</span>
                 </>
               ) : (
                 <>
                   <Send className="w-5 h-5" />
-                  <span>Obtenir mon devis personnalisé</span>
+                  <span>Obtenir mon devis en ligne</span>
                 </>
               )}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleWhatsAppQuote}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs transition-all cursor-pointer text-sm sm:text-base"
+            >
+              <MessageCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              <span>Demander via WhatsApp</span>
             </button>
           </div>
         </form>
@@ -334,4 +373,3 @@ export function QuoteForm({ initialProjectType }: { initialProjectType?: string 
     </div>
   );
 }
-

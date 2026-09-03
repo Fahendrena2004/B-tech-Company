@@ -3,7 +3,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { contactData } from "@/data/contact";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -69,10 +71,32 @@ export const metadata: Metadata = {
     images: ["/images/Acceuil.jpeg"],
   },
   icons: {
-    icon: "/images/logoBtechcompany-removebg-preview.png",
-    shortcut: "/images/logoBtechcompany-removebg-preview.png",
-    apple: "/images/logoBtechcompany-removebg-preview.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "B-Tech Company",
+  image: "https://btech-company.com/images/logoBtechcompany.png",
+  url: "https://btech-company.com",
+  telephone: contactData.phone,
+  email: contactData.email,
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "MG",
+  },
+  description:
+    "B-Tech Company conçoit des solutions digitales modernes, performantes et sur-mesure : sites web, applications mobiles, logiciels métiers et design graphique.",
+  priceRange: "$$",
+  sameAs: [
+    contactData.socials.facebook,
+    contactData.socials.linkedin,
+    contactData.socials.github,
+  ],
 };
 
 export default function RootLayout({
@@ -87,11 +111,18 @@ export default function RootLayout({
       className="h-full scroll-smooth antialiased"
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans bg-background text-foreground selection:bg-blue-600 selection:text-white transition-colors duration-200">
         <ThemeProvider defaultTheme="dark">
           <Navbar />
           <div className="flex-1 flex flex-col">{children}</div>
           <Footer />
+          <WhatsAppButton />
           <SpeedInsights />
         </ThemeProvider>
       </body>

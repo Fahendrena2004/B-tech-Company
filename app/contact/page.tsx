@@ -7,6 +7,8 @@ import {
   MessageSquare,
   MapPin,
   Clock,
+  MessageCircle,
+  ArrowUpRight,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { contactData } from "@/data/contact";
@@ -19,6 +21,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const cleanPhone = contactData.whatsapp.replace(/[^0-9]/g, "");
+
   return (
     <div className="flex flex-col w-full">
       {/* Header Banner */}
@@ -55,40 +59,81 @@ export default function ContactPage() {
 
             {/* Direct Cards */}
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+              {/* Email card */}
+              <a
+                href={`mailto:${contactData.email}`}
+                className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-blue-500/40 dark:hover:border-cyan-400/40 transition-all group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
-                    Email
-                  </h3>
-                  <p className="text-sm font-semibold text-slate-900 dark:text-white mt-0.5">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                      Email
+                    </h3>
+                    <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+                  </div>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-600 dark:group-hover:text-cyan-300 transition-colors">
                     {contactData.email}
                   </p>
                   <span className="text-[11px] text-slate-400">
                     Réponse sous 24h ouvrées
                   </span>
                 </div>
-              </div>
+              </a>
 
-              <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
-                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+              {/* Phone & WhatsApp card */}
+              <a
+                href={`https://wa.me/${cleanPhone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-emerald-500/40 dark:hover:border-emerald-400/40 transition-all group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                      Téléphone & WhatsApp
+                    </h3>
+                    <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" />
+                  </div>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white mt-0.5 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
+                    {contactData.phone}
+                  </p>
+                  <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+                    Cliquez pour discuter directement sur WhatsApp
+                  </span>
+                </div>
+              </a>
+
+              {/* Phone call card */}
+              <a
+                href={`tel:${contactData.phone.replace(/\s+/g, "")}`}
+                className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs hover:border-blue-500/40 dark:hover:border-cyan-400/40 transition-all group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
-                    Téléphone & WhatsApp
-                  </h3>
-                  <p className="text-sm font-semibold text-slate-900 dark:text-white mt-0.5">
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+                      Appel Direct
+                    </h3>
+                    <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+                  </div>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-600 dark:group-hover:text-cyan-300 transition-colors">
                     {contactData.phone}
                   </p>
                   <span className="text-[11px] text-slate-400">
-                    WhatsApp : {contactData.whatsapp}
+                    Disponible du Lundi au Vendredi
                   </span>
                 </div>
-              </div>
+              </a>
 
+              {/* Location card */}
               <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
                 <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5" />
@@ -103,6 +148,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Opening hours */}
               <div className="p-5 rounded-2xl bg-white dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 flex items-start gap-4 shadow-xs">
                 <div className="w-11 h-11 rounded-xl bg-blue-50 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5" />
@@ -177,4 +223,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

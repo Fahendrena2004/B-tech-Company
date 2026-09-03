@@ -10,11 +10,14 @@ import {
   ShieldCheck,
   Code2,
   Sparkles,
+  MessageCircle,
 } from "lucide-react";
 import { contactData } from "@/data/contact";
 import { FacebookIcon, LinkedinIcon, GithubIcon } from "@/components/icons";
 
 export function Footer() {
+  const cleanPhone = contactData.whatsapp.replace(/[^0-9]/g, "");
+
   return (
     <footer className="relative bg-slate-950 text-slate-300 border-t border-white/10 overflow-hidden">
       {/* Background ambient gradient glow */}
@@ -194,17 +197,34 @@ export function Footer() {
               Contact
             </h3>
             <ul className="space-y-3 text-xs sm:text-sm text-slate-400">
-              <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                <span className="hover:text-slate-200 transition-colors">
-                  {contactData.email}
-                </span>
+              <li>
+                <a
+                  href={`mailto:${contactData.email}`}
+                  className="flex items-start gap-2.5 hover:text-cyan-400 transition-colors group"
+                >
+                  <Mail className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <span>{contactData.email}</span>
+                </a>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                <span className="hover:text-slate-200 transition-colors">
-                  {contactData.phone}
-                </span>
+              <li>
+                <a
+                  href={`tel:${contactData.phone.replace(/\s+/g, "")}`}
+                  className="flex items-start gap-2.5 hover:text-cyan-400 transition-colors group"
+                >
+                  <Phone className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <span>{contactData.phone}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`https://wa.me/${cleanPhone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 hover:text-emerald-400 transition-colors group text-emerald-300/90"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <span>WhatsApp direct</span>
+                </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
@@ -271,4 +291,3 @@ export function Footer() {
     </footer>
   );
 }
-

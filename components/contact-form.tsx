@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
+import { contactData } from "@/data/contact";
 
 interface FormState {
   name: string;
@@ -41,13 +42,26 @@ export function ContactForm() {
     return Object.keys(errs).length === 0;
   };
 
+  const handleWhatsAppDirect = () => {
+    if (!validate()) return;
+    const cleanPhone = contactData.whatsapp.replace(/[^0-9]/g, "");
+    const text = encodeURIComponent(
+      `*Demande de Contact — B-Tech Company*\n\n` +
+      `👤 *Nom* : ${formData.name}\n` +
+      `📧 *Email* : ${formData.email}\n` +
+      `📞 *Téléphone* : ${formData.phone || "Non renseigné"}\n` +
+      `📌 *Type de projet* : ${formData.projectType}\n\n` +
+      `💬 *Message* :\n${formData.message}`
+    );
+    window.open(`https://wa.me/${cleanPhone}?text=${text}`, "_blank");
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setStatus("loading");
 
-    // Simulating asynchronous API transmission (ready for Laravel endpoint or Next server action)
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setStatus("success");
@@ -71,13 +85,24 @@ export function ContactForm() {
           <p className="text-sm text-slate-600 dark:text-zinc-300 max-w-md mx-auto">
             Merci d&apos;avoir contacté <strong>B-Tech Company</strong>. Notre équipe va examiner votre demande et vous répondra dans les plus brefs délais.
           </p>
-          <button
-            type="button"
-            onClick={() => setStatus("idle")}
-            className="px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors"
-          >
-            Envoyer un autre message
-          </button>
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setStatus("idle")}
+              className="px-6 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-500 transition-colors"
+            >
+              Envoyer un autre message
+            </button>
+            <a
+              href={`https://wa.me/${contactData.whatsapp.replace(/[^0-9]/g, "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-500" />
+              <span>Contacter sur WhatsApp</span>
+            </a>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
@@ -188,27 +213,37 @@ export function ContactForm() {
             {errors.message && <p className="text-xs text-red-500">{errors.message}</p>}
           </div>
 
-          {/* Submit button */}
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 disabled:opacity-50 transition-all cursor-pointer text-sm"
-          >
-            {status === "loading" ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Envoi en cours...</span>
-              </>
-            ) : (
-              <>
-                <Send className="w-4 h-4" />
-                <span>Envoyer ma demande</span>
-              </>
-            )}
-          </button>
+          {/* Action buttons */}
+          <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 disabled:opacity-50 transition-all cursor-pointer text-sm"
+            >
+              {status === "loading" ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Envoi en cours...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4" />
+                  <span>Envoyer ma demande</span>
+                </>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleWhatsAppDirect}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs transition-all cursor-pointer text-sm"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span>Transmettre via WhatsApp</span>
+            </button>
+          </div>
         </form>
       )}
     </div>
   );
 }
-
