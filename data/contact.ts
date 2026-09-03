@@ -12,7 +12,7 @@ export interface ContactInfo {
 }
 
 export const contactData: ContactInfo = {
-  email: "contact@btech-company.com",
+  email: "btechcompanymada@gmail.com",
   phone: "+261 34 05 821 06",
   whatsapp: "+261 34 05 821 06",
   address: "Madagascar (Localisation disponible prochainement)",
