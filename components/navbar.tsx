@@ -143,7 +143,7 @@ export function Navbar() {
             <ThemeToggle />
             <Link
               href="/devis"
-              className="relative inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[24px] text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md shadow-blue-500/20 transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 active:translate-y-0"
+              className="btn-tactile-primary px-5 py-2.5 rounded-full text-xs xl:text-sm text-white shadow-md flex items-center gap-2"
             >
               <Sparkles className="w-3.5 h-3.5 text-cyan-200 animate-pulse" />
               <span>Demander un devis</span>

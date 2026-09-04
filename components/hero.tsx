@@ -83,7 +83,7 @@ export function Hero() {
             >
               <Link
                 href="/services"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-[24px] font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-base"
+                className="w-full sm:w-auto btn-tactile-primary px-8 py-4 rounded-full text-base text-white shadow-lg flex items-center justify-center gap-2.5"
               >
                 <span>Découvrir nos services</span>
                 <ArrowRight className="w-4 h-4" />
@@ -91,7 +91,7 @@ export function Hero() {
 
               <Link
                 href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-[24px] font-semibold text-slate-800 dark:text-zinc-100 bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-white/15 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-white/30 shadow-xs transition-all duration-200 text-base"
+                className="w-full sm:w-auto btn-tactile-secondary px-8 py-4 rounded-full text-base text-slate-800 dark:text-zinc-100 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/15 flex items-center justify-center gap-2"
               >
                 <span>Nous contacter</span>
               </Link>

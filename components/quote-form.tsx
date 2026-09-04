@@ -416,17 +416,17 @@ export function QuoteForm({ initialProjectType }: { initialProjectType?: string 
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="inline-flex items-center gap-2 px-8 py-3 rounded-[24px] font-bold text-white bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-500/20 transition-all active:translate-y-px"
+                  className="btn-modern-primary px-8 py-3 rounded-full text-sm text-white"
                 >
                   <span>Suivant</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 ml-2" />
                 </button>
               ) : (
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
                     onClick={handleWhatsAppQuote}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[24px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-all shadow-sm"
                     title="Demander via WhatsApp"
                   >
                     <MessageCircle className="w-5 h-5" />
@@ -435,12 +435,12 @@ export function QuoteForm({ initialProjectType }: { initialProjectType?: string 
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-[24px] font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/25 disabled:opacity-50 transition-all active:translate-y-px"
+                    className="btn-modern-primary px-8 py-3 rounded-full text-sm text-white disabled:opacity-50"
                   >
                     {status === "loading" ? (
-                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <Loader2 className="w-5 h-5 animate-spin mr-2" />
                     ) : (
-                      <Send className="w-5 h-5" />
+                      <Send className="w-5 h-5 mr-2" />
                     )}
                     <span>Envoyer</span>
                   </button>

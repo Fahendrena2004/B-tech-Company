@@ -43,15 +43,15 @@ export function CTASection({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
                 href="/devis"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-[24px] font-bold text-slate-950 bg-gradient-to-r from-cyan-400 to-cyan-200 hover:from-cyan-300 hover:to-white shadow-lg shadow-cyan-500/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-base"
+                className="w-full sm:w-auto btn-tactile-primary px-8 py-4 rounded-full text-base text-white shadow-lg flex items-center justify-center gap-2.5"
               >
                 <span>Demander un devis gratuit</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </Link>
 
               <Link
                 href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-[24px] font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all duration-200 text-base"
+                className="w-full sm:w-auto btn-tactile-secondary px-8 py-4 rounded-full text-base text-white bg-white/10 border border-white/20 flex items-center justify-center gap-2"
               >
                 <PhoneCall className="w-4 h-4 text-cyan-400" />
                 <span>Nous contacter</span>

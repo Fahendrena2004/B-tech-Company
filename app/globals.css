@@ -134,3 +134,49 @@
     @apply font-heading;
   }
 }
+
+/* Ultra-Modern Glassmorphism & Ambient Glow Buttons */
+.btn-modern-primary,
+.btn-tactile-primary {
+  @apply relative inline-flex items-center justify-center font-bold tracking-wide transition-all duration-300 rounded-full cursor-pointer select-none bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-100 border border-cyan-400/20 backdrop-blur-md;
+}
+
+.btn-modern-orange,
+.btn-tactile-orange {
+  @apply relative inline-flex items-center justify-center font-bold tracking-wide transition-all duration-300 rounded-full cursor-pointer select-none bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-500/45 hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-100 border border-orange-400/30 backdrop-blur-md;
+}
+
+.btn-modern-secondary,
+.btn-tactile-secondary {
+  @apply relative inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 rounded-full cursor-pointer select-none bg-white/90 dark:bg-zinc-900/90 text-slate-800 dark:text-zinc-100 border border-slate-200/90 dark:border-white/15 shadow-sm hover:shadow-md hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-white/30 hover:-translate-y-0.5 backdrop-blur-md;
+}
+
+.btn-modern-emerald,
+.btn-tactile-emerald {
+  @apply relative inline-flex items-center justify-center font-bold tracking-wide transition-all duration-300 rounded-full cursor-pointer select-none bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-100 border border-emerald-400/20 backdrop-blur-md;
+}
+
+/* Soft Organic Curved Backgrounds & Bento Grid Cards */
+.organic-arch-top {
+  border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+}
+.organic-card {
+  border-radius: 28px;
+}
+.organic-card-lg {
+  border-radius: 32px;
+}
+
+/* Bento Grid Cards */
+.bento-card {
+  @apply rounded-[28px] p-6 bg-white/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between overflow-hidden hover:border-blue-500/40 dark:hover:border-cyan-400/40;
+}
+
+.bento-card-editorial {
+  @apply rounded-[28px] p-6 bg-white/90 dark:bg-zinc-900/90 border border-amber-200/80 dark:border-amber-900/40 shadow-sm hover:shadow-2xl transition-all duration-300 backdrop-blur-md flex flex-col justify-between overflow-hidden hover:border-orange-500/60 dark:hover:border-amber-500/50;
+}
+
+/* Skeleton Loading Effect */
+.skeleton-loader {
+  @apply animate-pulse bg-slate-200 dark:bg-zinc-800 rounded-2xl;
+}
