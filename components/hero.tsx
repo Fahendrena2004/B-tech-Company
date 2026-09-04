@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import {
   ArrowRight,
-  Sparkles,
   Layers,
   Code2,
   ShieldCheck,
@@ -137,29 +136,15 @@ export function Hero() {
               </div>
 
               {/* Main Visual Image */}
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 border border-slate-100 dark:border-white/5">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-slate-950 border border-slate-100 dark:border-white/5">
                 <Image
                   src="/images/Acceuil.jpeg"
-                  alt="Équipe B-Tech Company en plein développement"
+                  alt="B-Tech Company - Solutions Numériques, Développement Web, Mobile & Design"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-
-                {/* Floating Micro Badge on image */}
-                <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/10 flex items-center justify-between text-white">
-                  <div>
-                    <p className="text-xs font-semibold">Innovation & Créativité</p>
-                    <p className="text-[11px] text-slate-300">
-                      Technologies modernes : Next.js, React, Laravel, Mobile
-                    </p>
-                  </div>
-                  <div className="w-8 h-8 rounded-lg bg-blue-600/30 border border-cyan-400/40 flex items-center justify-center shrink-0">
-                    <Sparkles className="w-4 h-4 text-cyan-300" />
-                  </div>
-                </div>
               </div>
 
               {/* Floating Stat Widget */}
