@@ -220,10 +220,10 @@ export function Footer() {
                   href={`https://wa.me/${cleanPhone}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 hover:text-emerald-400 transition-colors group text-emerald-300/90"
+                  className="flex items-start gap-2.5 hover:text-cyan-400 transition-colors group"
                 >
-                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span>WhatsApp direct</span>
+                  <MessageCircle className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <span>WhatsApp : {contactData.whatsapp}</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

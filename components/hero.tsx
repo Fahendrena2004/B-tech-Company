@@ -6,7 +6,6 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import {
   ArrowRight,
-  Sparkles,
   Layers,
   Code2,
   ShieldCheck,
@@ -16,19 +15,13 @@ import {
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-transparent via-blue-950/5 to-transparent dark:via-blue-950/20">
-      {/* Ambient gradient circles & Organic Shapes */}
-      <div 
-        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-blue-600/20 via-cyan-500/20 to-indigo-600/10 blur-[100px] sm:blur-[120px] pointer-events-none animate-spin"
-        style={{ animationDuration: '30s', borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%' }}
-      />
-      <div 
-        className="absolute -bottom-32 right-1/4 w-[500px] h-[500px] bg-gradient-to-bl from-amber-500/10 via-orange-500/10 to-blue-500/10 blur-[100px] sm:blur-[120px] pointer-events-none animate-spin"
-        style={{ animationDuration: '40s', animationDirection: 'reverse', borderRadius: '40% 60% 60% 40% / 50% 50% 50% 50%' }}
-      />
-      
-      {/* Dashed spinning circles for Tech Vibe */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-dashed border-slate-300/30 dark:border-white/5 animate-spin pointer-events-none" style={{ animationDuration: '60s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-dashed border-slate-300/20 dark:border-white/5 animate-spin pointer-events-none" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />
+      {/* Background Tech Grids & Glowing Orbs */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      {/* Ambient gradient circles */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-gradient-to-tr from-blue-600/20 via-cyan-500/20 to-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -83,7 +76,7 @@ export function Hero() {
             >
               <Link
                 href="/services"
-                className="w-full sm:w-auto btn-tactile-primary px-8 py-4 rounded-full text-base text-white shadow-lg flex items-center justify-center gap-2.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 text-base"
               >
                 <span>Découvrir nos services</span>
                 <ArrowRight className="w-4 h-4" />
@@ -91,7 +84,7 @@ export function Hero() {
 
               <Link
                 href="/contact"
-                className="w-full sm:w-auto btn-tactile-secondary px-8 py-4 rounded-full text-base text-slate-800 dark:text-zinc-100 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/15 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-slate-800 dark:text-zinc-100 bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-white/15 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-white/30 shadow-xs transition-all duration-200 text-base"
               >
                 <span>Nous contacter</span>
               </Link>
@@ -124,55 +117,52 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 relative flex items-center justify-center"
+            className="lg:col-span-5 relative"
           >
-            {/* Organic Blob Image Container */}
-            <div className="relative w-full max-w-[450px] aspect-square group">
-              {/* Animated shadow behind blob */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-tr from-cyan-400 to-blue-600 blur-2xl opacity-40 animate-pulse pointer-events-none"
-                style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%', animationDuration: '4s' }}
-              />
-              
-              <div 
-                className="relative w-full h-full overflow-hidden bg-slate-200 dark:bg-zinc-800 animate-spin border-[6px] border-white dark:border-zinc-900 shadow-xl"
-                style={{ 
-                  animationDuration: '20s', 
-                  borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' 
-                }}
-              >
-                {/* We counter-spin the image so it stays upright while the mask spins */}
-                <div 
-                  className="w-[120%] h-[120%] -mt-[10%] -ml-[10%] animate-spin" 
-                  style={{ animationDuration: '20s', animationDirection: 'reverse' }}
-                >
-                  <Image
-                    src="/images/Acceuil.jpeg"
-                    alt="Équipe B-Tech Company en plein développement"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    priority
-                  />
+            {/* Technological Card Container with Glassmorphism */}
+            <div className="relative rounded-2xl p-2.5 sm:p-3.5 bg-gradient-to-br from-white/80 to-white/40 dark:from-zinc-900/90 dark:to-zinc-950/80 border border-slate-200/80 dark:border-white/10 shadow-2xl backdrop-blur-xl group">
+              {/* Inner Decorative Tech Header */}
+              <div className="flex items-center justify-between px-3 py-2 border-b border-slate-200/60 dark:border-white/5 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
                 </div>
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400 dark:text-zinc-500">
+                  <Code2 className="w-3.5 h-3.5 text-cyan-500" />
+                  <span>btech-workspace.env</span>
+                </div>
+                <div className="w-3 h-3" />
               </div>
 
-              {/* Floating Badge */}
+              {/* Main Visual Image */}
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-slate-950 border border-slate-100 dark:border-white/5">
+                <Image
+                  src="/images/Acceuil.jpeg"
+                  alt="B-Tech Company - Solutions Numériques, Développement Web, Mobile & Design"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+              </div>
+
+              {/* Floating Stat Widget */}
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute -bottom-6 -right-6 p-4 rounded-[28px] bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-slate-200 dark:border-white/15 shadow-2xl flex items-center gap-3 z-10"
+                className="absolute -bottom-5 -left-4 sm:-left-6 p-3.5 rounded-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-slate-200 dark:border-white/15 shadow-xl flex items-center gap-3"
               >
-                <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-cyan-400 flex items-center justify-center font-black">
-                  <Sparkles className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-lg bg-blue-600/10 dark:bg-cyan-500/20 text-blue-600 dark:text-cyan-400 flex items-center justify-center font-black text-sm">
+                  100%
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-900 dark:text-white">
-                    Innovation
+                  <p className="text-xs font-bold text-slate-900 dark:text-white">
+                    Solutions sur-mesure
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-zinc-400">
-                    & Créativité
+                  <p className="text-[10px] text-slate-500 dark:text-zinc-400">
+                    Conçues selon vos besoins
                   </p>
                 </div>
               </motion.div>
