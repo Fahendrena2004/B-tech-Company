@@ -88,10 +88,10 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 dark:from-white dark:via-cyan-200 dark:to-blue-400 bg-clip-text text-transparent">
-                B-Tech <span className="text-blue-600 dark:text-cyan-400 font-black">Company</span>
+              <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
+                B-Tech <span className="text-blue-600 font-black">Company</span>
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-widest text-slate-500 dark:text-zinc-400">
+              <span className="text-[10px] uppercase font-semibold tracking-widest text-slate-500">
                 Digital Solutions
               </span>
             </div>

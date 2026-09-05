@@ -169,7 +169,7 @@ export function ContactForm() {
                 disabled={isLoading}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Ex: Jean Dupont"
+                placeholder="Votre nom complet"
                 className={`w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors disabled:opacity-50 ${
                   errors.name
                     ? "border-red-500 focus:border-red-500"
@@ -190,7 +190,7 @@ export function ContactForm() {
                 disabled={isLoading}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="Ex: jean.dupont@example.com"
+                placeholder="Votre adresse email"
                 className={`w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-zinc-800/80 text-slate-900 dark:text-white focus:outline-none transition-colors disabled:opacity-50 ${
                   errors.email
                     ? "border-red-500 focus:border-red-500"
@@ -213,7 +213,7 @@ export function ContactForm() {
                 disabled={isLoading}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="Ex: +261 34 00 000 00"
+                placeholder="Votre numéro de téléphone"
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 disabled:opacity-50"
               />
             </div>

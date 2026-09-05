@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Users,
   User,
@@ -39,69 +40,70 @@ export default function TeamPage() {
 
       {/* Team Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mb-20">
-        <div className="max-w-2xl mx-auto mb-10 p-4 rounded-[28px] bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/70 dark:border-cyan-500/20 text-center text-xs sm:text-sm text-slate-600 dark:text-zinc-300">
-          <p>
-            ℹ️ <strong>Structure préconfigurée :</strong> Les fiches ci-dessous présentent les postes clés et compétences de l&apos;équipe. Les profils individuels seront mis à jour avec les informations nominatives officielles.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {teamMembers.map((member) => (
             <div
               key={member.id}
-              className="group relative rounded-[28px] p-6 bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col justify-between"
+              className="group relative rounded-[28px] bg-white/70 dark:bg-zinc-900/60 border border-slate-200/80 dark:border-white/10 hover:border-blue-400 dark:hover:border-cyan-400/40 shadow-xs hover:shadow-xl transition-all duration-300 backdrop-blur-sm flex flex-col overflow-hidden"
             >
-              <div>
+              <div className="flex flex-col flex-1">
                 {/* Photo Placeholder */}
-                <div className="relative aspect-square rounded-[28px] bg-gradient-to-br from-blue-600/10 via-cyan-500/10 to-indigo-600/10 dark:from-blue-500/20 dark:to-cyan-400/20 border border-blue-200/60 dark:border-white/10 flex flex-col items-center justify-center p-6 text-center mb-5 group-hover:scale-[1.02] transition-transform duration-300 overflow-hidden">
-                  <div className="w-16 h-16 rounded-full bg-blue-100 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shadow-inner mb-2">
-                    <User className="w-8 h-8" />
+                <div className="group/photo relative aspect-square w-full bg-gradient-to-br from-blue-600/10 via-cyan-500/10 to-indigo-600/10 dark:from-blue-500/20 dark:to-cyan-400/20 border-b border-blue-200/60 dark:border-white/10 flex flex-col items-center justify-center text-center overflow-hidden">
+                  
+                  {/* Default Content */}
+                  <div className="flex flex-col items-center justify-center transition-opacity duration-300 group-hover/photo:opacity-0 absolute inset-0">
+                    {member.avatarUrl ? (
+                      <Image
+                        src={member.avatarUrl}
+                        alt={`Photo de ${member.name}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover group-hover/photo:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <>
+                        <div className="w-20 h-20 rounded-full bg-blue-100 dark:bg-zinc-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center shadow-inner mb-2">
+                          <User className="w-10 h-10" />
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500">
+                          Photo du membre
+                        </span>
+                      </>
+                    )}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-zinc-500">
-                    Photo du membre
-                  </span>
+
+                  {/* Hover Overlay Content (Contact Info) */}
+                  <div className="absolute inset-0 bg-slate-900/60 flex flex-col items-center justify-center opacity-0 group-hover/photo:opacity-100 transition-opacity duration-300 p-4">
+                    <span className="text-white font-bold mb-2">Contact</span>
+                    {member.email && (
+                      <span className="text-blue-50 text-xs sm:text-sm break-all">{member.email}</span>
+                    )}
+                    {member.phone && (
+                      <span className="text-blue-50 text-sm mt-1">{member.phone}</span>
+                    )}
+                    <div className="flex gap-3 mt-4">
+                      <a href={member.linkedinUrl || "#"} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn de ${member.name}`} className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                        <LinkedinIcon className="w-4 h-4 text-white" />
+                      </a>
+                      <a href={member.githubUrl || "#"} target="_blank" rel="noopener noreferrer" aria-label={`GitHub de ${member.name}`} className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors">
+                        <GithubIcon className="w-4 h-4 text-white" />
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
 
-                {/* Role badge & Info */}
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-50 dark:bg-zinc-800 text-blue-700 dark:text-cyan-300 border border-blue-100 dark:border-white/10 inline-block mb-2">
-                  {member.department}
-                </span>
-
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  {member.name}
-                </h3>
-                <p className="text-xs font-semibold text-blue-600 dark:text-cyan-400 mt-0.5">
-                  {member.role}
-                </p>
-
-                <p className="text-xs text-slate-600 dark:text-zinc-300 mt-3 leading-relaxed">
-                  {member.bio}
-                </p>
+                <div className="p-6 pb-2 flex-1 flex flex-col justify-center">
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white text-center leading-tight">
+                    {member.name}
+                  </h3>
+                </div>
               </div>
 
-              {/* Social placeholders */}
-              <div className="pt-4 mt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">Réseaux pros</span>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={member.linkedinUrl || "https://linkedin.com"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Profil LinkedIn"
-                    className="p-1.5 rounded-lg bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
-                  >
-                    <LinkedinIcon className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={member.githubUrl || "https://github.com"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Profil GitHub"
-                    className="p-1.5 rounded-lg bg-slate-100 dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                  </a>
-                </div>
+              <div className="px-6 py-4 mt-auto border-t border-slate-100 dark:border-white/5 text-center bg-slate-50/50 dark:bg-white/[0.02]">
+                <span className="text-sm font-bold text-blue-600 dark:text-cyan-400 uppercase tracking-wide">
+                  {member.role}
+                </span>
               </div>
             </div>
           ))}

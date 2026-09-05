@@ -60,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg sm:text-xl text-slate-600 dark:text-zinc-300 max-w-2xl leading-relaxed mx-auto lg:mx-0 font-normal"
+              className="text-lg sm:text-xl text-slate-600 dark:text-zinc-300 max-w-lg leading-relaxed mx-auto lg:mx-0 font-normal"
             >
               B-Tech Company conçoit des solutions digitales modernes,
               performantes et adaptées aux besoins des entreprises et des
@@ -148,31 +148,18 @@ export function Hero() {
             <motion.div
               animate={{ y: [-10, 10, -10] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="relative z-10 w-full max-w-sm aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+              className="relative z-10 w-full max-w-md xl:max-w-lg shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] rounded-[2.5rem] overflow-hidden"
             >
-              <Image
-                src="/images/Acceuil.jpeg"
-                alt="B-Tech Company - Solutions Numériques"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-
-            {/* Badge "Pilule" Flottant */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute bottom-6 -left-6 sm:-left-12 z-20 px-6 py-3.5 rounded-full bg-white text-slate-900 shadow-2xl flex items-center gap-3"
-            >
-              <div className="text-orange-500">
-                <Sparkles className="w-5 h-5" />
+              <div className="relative w-full" style={{ paddingBottom: '100%' }}>
+                <Image
+                  src="/images/Acceuil.jpeg"
+                  alt="B-Tech Company - Solutions Numériques"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span className="font-bold text-sm">
-                Joie d&apos;apprendre
-              </span>
             </motion.div>
           </motion.div>
         </div>
