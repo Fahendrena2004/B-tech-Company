@@ -11,56 +11,6 @@ export function CTASection({
   title?: string;
   subtitle?: string;
 }) {
-  return (
-    <section className="relative py-16 lg:py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-[32px] p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-blue-900 via-slate-900 to-zinc-950 text-white border border-blue-500/30 shadow-2xl overflow-hidden">
-          {/* Ambient light glow & Organic Shapes */}
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/20 to-blue-500/10 blur-[100px] pointer-events-none animate-spin" style={{ animationDuration: '40s', borderRadius: '40% 60% 50% 50% / 50% 50% 60% 40%' }} />
-          <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/3 w-[600px] h-[600px] bg-gradient-to-bl from-blue-600/30 to-indigo-500/20 blur-[100px] pointer-events-none animate-spin" style={{ animationDuration: '50s', animationDirection: 'reverse', borderRadius: '50% 50% 40% 60% / 60% 40% 50% 50%' }} />
-          
-          <div className="absolute top-10 right-20 text-cyan-400/30 animate-pulse pointer-events-none">
-            <Sparkles className="w-6 h-6" />
-          </div>
-          <div className="absolute bottom-10 left-20 text-blue-400/40 animate-bounce pointer-events-none" style={{ animationDuration: '4s' }}>
-            <Sparkles className="w-10 h-10" />
-          </div>
-
-          <div className="relative max-w-3xl mx-auto text-center space-y-6 z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Démarrons une collaboration</span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              {title}
-            </h2>
-
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              {subtitle}
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Link
-                href="/devis"
-                className="w-full sm:w-auto btn-tactile-primary px-8 py-4 rounded-full text-base text-white shadow-lg flex items-center justify-center gap-2.5"
-              >
-                <span>Demander un devis gratuit</span>
-                <ArrowRight className="w-4 h-4 text-white" />
-              </Link>
-
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto btn-tactile-secondary px-8 py-4 rounded-full text-base text-white bg-white/10 border border-white/20 flex items-center justify-center gap-2"
-              >
-                <PhoneCall className="w-4 h-4 text-cyan-400" />
-                <span>Nous contacter</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 }
 

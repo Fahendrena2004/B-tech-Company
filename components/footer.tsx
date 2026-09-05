@@ -7,8 +7,6 @@ import {
   MapPin,
   Clock,
   ArrowUpRight,
-  ShieldCheck,
-  Code2,
   Sparkles,
   MessageCircle,
 } from "lucide-react";
@@ -19,12 +17,27 @@ export function Footer() {
   const cleanPhone = contactData.whatsapp.replace(/[^0-9]/g, "");
 
   return (
-    <footer className="relative bg-slate-950 text-slate-300 border-t border-white/10 overflow-hidden">
+    <footer className="relative bg-slate-950 text-slate-300 overflow-hidden mt-10">
+      {/* Wave shape at top */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="relative block w-full h-[60px] sm:h-[120px]"
+        >
+          <path
+            d="M0,0 C300,120 900,120 1200,0 L1200,0 L0,0 Z"
+            className="fill-white dark:fill-slate-900"
+          ></path>
+        </svg>
+      </div>
+
       {/* Background ambient gradient glow */}
       <div className="absolute top-0 left-1/4 -translate-x-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 translate-x-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-12">
           {/* Column 1: Brand & Pitch (2 cols on lg) */}
@@ -50,14 +63,37 @@ export function Footer() {
               dans l&apos;ère digitale.
             </p>
 
-            {/* Values badges */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-950/60 text-cyan-300 border border-cyan-500/20">
-                <Code2 className="w-3 h-3" /> Expertise Technique
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-950/60 text-blue-300 border border-blue-500/20">
-                <ShieldCheck className="w-3 h-3" /> Qualité & Fiabilité
-              </span>
+            {/* Social Icons */}
+            <div className="pt-2">
+              <div className="flex items-center gap-2">
+                <a
+                  href={contactData.socials.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook B-Tech Company"
+                  className="p-2.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-colors"
+                >
+                  <FacebookIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href={contactData.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn B-Tech Company"
+                  className="p-2.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-colors"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href={contactData.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub B-Tech Company"
+                  className="p-2.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-colors"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -230,46 +266,7 @@ export function Footer() {
                 <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                 <span>{contactData.address}</span>
               </li>
-              <li className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                <span>{contactData.hours}</span>
-              </li>
             </ul>
-
-            <div className="pt-2">
-              <h4 className="text-xs font-semibold uppercase text-slate-300 mb-2">
-                Réseaux Sociaux
-              </h4>
-              <div className="flex items-center gap-2">
-                <a
-                  href={contactData.socials.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook B-Tech Company"
-                  className="p-2.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-colors"
-                >
-                  <FacebookIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href={contactData.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn B-Tech Company"
-                  className="p-2.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-colors"
-                >
-                  <LinkedinIcon className="w-4 h-4" />
-                </a>
-                <a
-                  href={contactData.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub B-Tech Company"
-                  className="p-2.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-colors"
-                >
-                  <GithubIcon className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
 

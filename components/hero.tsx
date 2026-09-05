@@ -10,13 +10,13 @@ import {
   Code2,
   ShieldCheck,
   Zap,
+  Sparkles,
 } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-transparent via-blue-950/5 to-transparent dark:via-blue-950/20">
-      {/* Background Tech Grids & Glowing Orbs */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* Background Glowing Orbs */}
 
       {/* Ambient gradient circles */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-gradient-to-tr from-blue-600/20 via-cyan-500/20 to-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
@@ -117,56 +117,63 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 relative flex justify-center mt-10 lg:mt-0"
           >
-            {/* Technological Card Container with Glassmorphism */}
-            <div className="relative rounded-2xl p-2.5 sm:p-3.5 bg-gradient-to-br from-white/80 to-white/40 dark:from-zinc-900/90 dark:to-zinc-950/80 border border-slate-200/80 dark:border-white/10 shadow-2xl backdrop-blur-xl group">
-              {/* Inner Decorative Tech Header */}
-              <div className="flex items-center justify-between px-3 py-2 border-b border-slate-200/60 dark:border-white/5 mb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400 dark:text-zinc-500">
-                  <Code2 className="w-3.5 h-3.5 text-cyan-500" />
-                  <span>btech-workspace.env</span>
-                </div>
-                <div className="w-3 h-3" />
-              </div>
+            {/* Halo de lumière radiale dorée */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square bg-[radial-gradient(circle_at_center,rgba(234,179,8,0.15),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.15),transparent_70%)] blur-2xl pointer-events-none" />
 
-              {/* Main Visual Image */}
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-slate-950 border border-slate-100 dark:border-white/5">
-                <Image
-                  src="/images/Acceuil.jpeg"
-                  alt="B-Tech Company - Solutions Numériques, Développement Web, Mobile & Design"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  priority
+            {/* Cercle concentrique subtil */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] aspect-square rounded-full border border-yellow-500/10 dark:border-cyan-500/10 pointer-events-none" />
+
+            {/* Forme d'arrière-plan organique (nuage) en bas à gauche */}
+            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-slate-100 dark:bg-white/5 rounded-full blur-[80px] pointer-events-none" />
+
+            {/* Arbre en pointillés animés (effets d'orbite) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] sm:w-[130%] aspect-square pointer-events-none opacity-40 dark:opacity-60 flex items-center justify-center animate-[spin_60s_linear_infinite]">
+              <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" stroke="currentColor">
+                <path
+                  d="M50 90 V70 M50 70 C30 70 20 60 20 45 C20 30 35 25 50 10 C65 25 80 30 80 45 C80 60 70 70 50 70"
+                  className="text-blue-400 dark:text-cyan-500 stroke-[0.5]"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    strokeDasharray: "4 6",
+                    animation: "dash 20s linear infinite"
+                  }}
                 />
-              </div>
-
-              {/* Floating Stat Widget */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="absolute -bottom-5 -left-4 sm:-left-6 p-3.5 rounded-xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-slate-200 dark:border-white/15 shadow-xl flex items-center gap-3"
-              >
-                <div className="w-10 h-10 rounded-lg bg-blue-600/10 dark:bg-cyan-500/20 text-blue-600 dark:text-cyan-400 flex items-center justify-center font-black text-sm">
-                  100%
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-900 dark:text-white">
-                    Solutions sur-mesure
-                  </p>
-                  <p className="text-[10px] text-slate-500 dark:text-zinc-400">
-                    Conçues selon vos besoins
-                  </p>
-                </div>
-              </motion.div>
+              </svg>
             </div>
+
+            {/* Main Visual Image - Photo flottante */}
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+              className="relative z-10 w-full max-w-sm aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+            >
+              <Image
+                src="/images/Acceuil.jpeg"
+                alt="B-Tech Company - Solutions Numériques"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+
+            {/* Badge "Pilule" Flottant */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="absolute bottom-6 -left-6 sm:-left-12 z-20 px-6 py-3.5 rounded-full bg-white text-slate-900 shadow-2xl flex items-center gap-3"
+            >
+              <div className="text-orange-500">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <span className="font-bold text-sm">
+                Joie d&apos;apprendre
+              </span>
+            </motion.div>
           </motion.div>
         </div>
       </div>
