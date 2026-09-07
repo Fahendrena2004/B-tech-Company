@@ -70,7 +70,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Développeur Web et Mobile",
     email: "tojorandrianarivelo14@gmail.com",
     phone: "0389379350",
-    avatarUrl: ""
+    avatarUrl: "/images/team/tojo.png"
   },
   {
     id: "0007",
