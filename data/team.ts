@@ -44,6 +44,16 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "0004",
+    name: "RANDRIANAIVOSOA Zafindravao Sophie",
+    role: "Responsable communication / Assistante administrative",
+    department: "Administration & Communication",
+    bio: "Responsable de la communication et assistante administrative",
+    email: "sophierandria.crys@gmail.com",
+    phone: "0345009283",
+    avatarUrl: ""
+  },
+    {
+    id: "0005",
     name: "RAKOTONDRAMANANA Narindra Tsiriniaina",
     role: "Dev web / mobile",
     department: "Développement",
@@ -53,18 +63,8 @@ export const teamMembers: TeamMember[] = [
     avatarUrl: "/images/team/Tsiry.jpg"
   },
   {
-    id: "0005",
-    name: "RANDRIANAIVOSOA Zafindravao Sophie",
-    role: "Responsable communication / Assistante administrative",
-    department: "Administration & Communication",
-    bio: "Responsable de la communication et assistante administrative",
-    email: "sophierandria.crys@gmail.com",
-    phone: "0345009283",
-    avatarUrl: ""
-  },
-  {
     id: "0006",
-    name: "RANDRIANARIVELO Tojoniaina Jean Mar",
+    name: "RANDRIANARIVELO Tojoniaina",
     role: "Dev web / mobile",
     department: "Développement",
     bio: "Développeur Web et Mobile",
