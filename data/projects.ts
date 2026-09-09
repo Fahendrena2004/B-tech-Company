@@ -1,4 +1,4 @@
-export type ProjectCategory = "Web" | "Mobile" | "Logiciels" | "Design" | "Décoration & Vaisselle";
+export type ProjectCategory = "Web" | "Mobile" | "Logiciels" | "Design" ;
 
 export interface ProjectItem {
   id: string;
@@ -25,72 +25,93 @@ export const portfolioCategories = [
   "Web",
   "Mobile",
   "Logiciels",
-  "Design",
-  "Décoration & Vaisselle"
+  "Design"
 ] as const;
 
 export const portfolioProjects: ProjectItem[] = [
   {
-    id: "projet-deco-1",
-    title: "Collection 'Terroir' — Arts de la Table",
-    category: "Décoration & Vaisselle",
-    tagline: "Design d'objets, façonnage terracotta & céramique émaillée",
-    description: "Conception sur-mesure d'une collection d'art de la table d'exception. Alliance de terracotta brute et de poteries en grès émaillé aux finitions faites main, sublimée par une modélisation 3D photoréaliste et une scénographie studio.",
+    id: "gestion-scolaire",
+    title: "Gestion Scolaire",
+    category: "Logiciels",
+    tagline: "Plateforme de pilotage administratif et académique",
+    description: "Une application de gestion scolaire qui centralise les opérations essentielles d'un établissement : paiements, inscriptions, réinscriptions, notes et organisation académique.",
     features: [
-      "Assiettes & bols artisanaux terracotta",
-      "Émail haute résistance & contact alimentaire",
-      "Modélisation 3D et rendus d'éclairage chaud",
-      "Scénographie photographique e-commerce"
+      "Suivi des paiements de scolarité",
+      "Inscriptions et réinscriptions des étudiants",
+      "Gestion et consultation des notes",
+      "Configuration de la structure académique"
     ],
-    technologies: ["Design Produit", "Blender 3D", "Direction Artistique"],
-    materials: ["Terracotta cuite", "Grès émaillé", "Bois d'acacia"],
-    kpiMetric: "Pièces Émaillées Main",
-    kpiLabel: "Collection Éditioriale",
+    technologies: ["NextJS", "Laravel 13", "MySql"],
+    kpiMetric: "4 modules",
+    kpiLabel: "Gestion centralisée",
     isPlaceholder: false,
     status: "Livrable",
-    gradient: "from-amber-600/30 via-orange-500/20 to-amber-900/40",
-    imageUrl: "/images/portfolio-deco-1.jpg",
-    aspectRatio: "portrait"
-  },
-  {
-    id: "projet-web-1",
-    title: "E-Commerce Luxe Madagascar",
-    category: "Web",
-    tagline: "Plateforme web moderne & haute performance",
-    description: "Une solution e-commerce sur mesure pour une marque de luxe, offrant un design épuré, un tunnel d'achat optimisé et une rapidité de chargement exemplaire (98/100 Lighthouse).",
-    features: [
-      "Interface utilisateur réactive & fluide",
-      "Optimisation SEO de premier ordre",
-      "Panneau d'administration sécurisé"
-    ],
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe"],
-    kpiMetric: "98/100",
-    kpiLabel: "Score Lighthouse",
-    isPlaceholder: false,
-    status: "Livrable",
-    gradient: "from-blue-600/30 to-cyan-500/20",
-    imageUrl: "/images/portfolio-web-1.jpg",
+    gradient: "from-indigo-600/30 via-blue-600/20 to-cyan-500/20",
+    imageUrl: "/images/portoflio/GestionEcole.png",
     aspectRatio: "video"
   },
   {
-    id: "projet-mobile-1",
-    title: "App Livraison Express",
-    category: "Mobile",
-    tagline: "Expérience mobile fluide et intuitive",
-    description: "Application mobile de livraison permettant le suivi en temps réel des commandes avec carte temps-réel, poussées de notifications et paiement sécurisé.",
+    id: "site-vitrine-faneva",
+    title: "Site Vitrine SEO Faneva",
+    category: "Web",
+    tagline: "Visibilité digitale, référencement et publicité en ligne",
+    description: "Un site vitrine pensé pour valoriser l'activité de Faneva, améliorer sa présence dans les moteurs de recherche et soutenir ses campagnes publicitaires digitales.",
     features: [
-      "Navigation intuitive tactile",
-      "Gestion des notifications Push",
-      "Suivi cartographique temps réel"
+      "Pages de présentation claires et adaptées à tous les écrans",
+      "Structure optimisée pour le référencement naturel (SEO)",
+      "Mise en avant des services et appels à l'action",
+      "Base prête pour les campagnes publicitaires en ligne"
     ],
-    technologies: ["React Native", "TypeScript", "Node.js"],
-    kpiMetric: "+10k Users",
-    kpiLabel: "Actifs / Jour",
+    technologies: ["Next.js", "Site Vitrine & SEO", "Publicité digitale"],
+    kpiMetric: "SEO + Pub",
+    kpiLabel: "Visibilité en ligne",
     isPlaceholder: false,
     status: "Livrable",
-    gradient: "from-cyan-600/30 to-blue-500/20",
-    imageUrl: "/images/portfolio-mobile-1.jpg",
-    aspectRatio: "portrait"
+    gradient: "from-blue-600/30 via-cyan-500/20 to-emerald-500/20",
+    imageUrl: "/images/portoflio/SiteFaneva.png",
+    aspectRatio: "video"
+  },
+  {
+    id: "gestion-location-appartement",
+    title: "Gestion Location Appartement",
+    category: "Web",
+    tagline: "Plateforme immobilière & Suivi locatif",
+    description: "Une application web d'aide à la recherche d'appartements et de suivi complet de la gestion locative (baux, loyers, demandes locataires).",
+    features: [
+      "Recherche & réservation d'appartements disponibles",
+      "Suivi des contrats de location & échéances de loyer",
+      "Gestion des demandes locataires & bailleurs",
+      "Tableau de bord de gestion immobilière"
+    ],
+    technologies: ["Next.js", "Laravel", "MySQL"],
+    kpiMetric: "Immobilier",
+    kpiLabel: "En cours",
+    isPlaceholder: false,
+    status: "En développement",
+    gradient: "from-teal-600/30 via-emerald-600/20 to-cyan-500/20",
+    imageUrl: "/images/portoflio/LocationAppartement.png",
+    aspectRatio: "video"
+  },
+  {
+    id: "gestion-quincaillerie-fianarantsoa",
+    title: "Vente & Gestion Quincaillerie (Fianarantsoa)",
+    category: "Logiciels",
+    tagline: "Centralisation des ventes, du stock et de la facturation",
+    description: "Plateforme logicielle complète pour une quincaillerie à Fianarantsoa, centralisant la gestion des ventes, du stock de matériaux et la facturation automatique.",
+    features: [
+      "Centralisation des ventes et encaissements en caisse",
+      "Gestion dynamique des stocks & matériaux",
+      "Facturation automatique & édition de reçus/devis",
+      "Suivi des rapports de ventes et caisse"
+    ],
+    technologies: ["Next.js", "Laravel", "MySQL"],
+    kpiMetric: "Gestion & Stock",
+    kpiLabel: "En cours",
+    isPlaceholder: false,
+    status: "En développement",
+    gradient: "from-amber-600/30 via-orange-600/20 to-blue-600/20",
+    imageUrl: "/images/portoflio/quancailleri.jpg",
+    aspectRatio: "video"
   },
   {
     id: "projet-logiciel-1",
@@ -109,50 +130,7 @@ export const portfolioProjects: ProjectItem[] = [
     isPlaceholder: false,
     status: "Livrable",
     gradient: "from-indigo-600/30 to-blue-600/20",
-    imageUrl: "/images/services.jpeg",
+    imageUrl: "/images/portoflio/gestion_erp.jpg",
     aspectRatio: "video"
-  },
-  {
-    id: "projet-design-1",
-    title: "Rebranding & Studio Visuel Tech",
-    category: "Design",
-    tagline: "Charte graphique, UI/UX & supports visuels",
-    description: "Refonte complète de l'identité visuelle d'une entreprise innovante, incluant un logo vectoriel moderne, un design system complet et des maquettes d'application réactives.",
-    features: [
-      "Identité de marque & logo vectoriel HD",
-      "Design system UI/UX complet",
-      "Déclinaisons publicitaires digitales & print"
-    ],
-    technologies: ["Figma", "Adobe Illustrator", "Prototypage 3D"],
-    kpiMetric: "100% Vectoriel",
-    kpiLabel: "Design System",
-    isPlaceholder: false,
-    status: "Livrable",
-    gradient: "from-violet-600/30 to-cyan-500/20",
-    imageUrl: "/images/Apropos.jpeg",
-    aspectRatio: "video"
-  },
-  {
-    id: "projet-deco-2",
-    title: "Vases & Ornements 'Minéral' — Décoration",
-    category: "Décoration & Vaisselle",
-    tagline: "Pièces uniques sculptées en céramique brute",
-    description: "Série d'éléments de décoration intérieure façonnés à la main. Lignes organiques minérales et compositions architecturales pour environnements résidentiels et commerciaux de haut standing.",
-    features: [
-      "Formes sculpturale organiques",
-      "Texture minérale brute & patine naturelle",
-      "Scénographie d'intérieur & luminaires"
-    ],
-    technologies: ["Design d'Objet", "Rendu 3D Studio", "Direction Artistique"],
-    materials: ["Grès cérame", "Pigments naturels"],
-    kpiMetric: "Série Limitée",
-    kpiLabel: "Design Minéral",
-    isPlaceholder: false,
-    status: "Livrable",
-    gradient: "from-orange-600/30 via-amber-700/20 to-orange-950/40",
-    imageUrl: "/images/portfolio-deco-1.jpg",
-    aspectRatio: "portrait"
   }
 ];
-
-
