@@ -89,7 +89,7 @@ export const portfolioProjects: ProjectItem[] = [
     isPlaceholder: false,
     status: "En développement",
     gradient: "from-teal-600/30 via-emerald-600/20 to-cyan-500/20",
-    imageUrl: "/images/portoflio/LocationAppartement.png",
+    imageUrl: "/images/portoflio/Hotel.jpg",
     aspectRatio: "video"
   },
   {
@@ -125,10 +125,10 @@ export const portfolioProjects: ProjectItem[] = [
       "Génération automatisée de rapports PDF"
     ],
     technologies: ["Laravel", "PHP", "MySQL", "Vue.js"],
-    kpiMetric: "-45% Temps",
+    kpiMetric: "-35% Temps",
     kpiLabel: "Gain Opérationnel",
     isPlaceholder: false,
-    status: "Livrable",
+    status: "En développement",
     gradient: "from-indigo-600/30 to-blue-600/20",
     imageUrl: "/images/portoflio/gestion_erp.jpg",
     aspectRatio: "video"
