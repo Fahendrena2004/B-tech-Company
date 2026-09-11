@@ -30,7 +30,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Responsable IT et DevOps",
     email: "marinomiha7@gmail.com",
     phone: "0380530748",
-    avatarUrl: ""
+    avatarUrl: "/images/team/marinoh.png"
   },
   {
     id: "0003",
