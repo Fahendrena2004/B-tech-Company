@@ -89,7 +89,7 @@ export const portfolioProjects: ProjectItem[] = [
     isPlaceholder: false,
     status: "En développement",
     gradient: "from-teal-600/30 via-emerald-600/20 to-cyan-500/20",
-    imageUrl: "/images/portoflio/LocationAppartement.png",
+    imageUrl: "/images/portoflio/LocationAppartement.jpg",
     aspectRatio: "video"
   },
   {
@@ -113,24 +113,4 @@ export const portfolioProjects: ProjectItem[] = [
     imageUrl: "/images/portoflio/quancailleri.jpg",
     aspectRatio: "video"
   },
-  {
-    id: "projet-logiciel-1",
-    title: "ERP Gestion Hôtelière & Réservations",
-    category: "Logiciels",
-    tagline: "Système de gestion personnalisé pour entreprise",
-    description: "Logiciel métier complet automatisant les réservations, la facturation et l'analyse de données en temps réel pour établissement hôtelier.",
-    features: [
-      "Tableau de bord statistique interactif",
-      "Gestion sécurisée des accès et rôles",
-      "Génération automatisée de rapports PDF"
-    ],
-    technologies: ["Laravel", "PHP", "MySQL", "Vue.js"],
-    kpiMetric: "-35% Temps",
-    kpiLabel: "Gain Opérationnel",
-    isPlaceholder: false,
-    status: "En développement",
-    gradient: "from-indigo-600/30 to-blue-600/20",
-    imageUrl: "/images/portoflio/gestion_erp.jpg",
-    aspectRatio: "video"
-  }
 ];

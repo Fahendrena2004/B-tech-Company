@@ -1,7 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { Send, CheckCircle2, AlertCircle, Loader2, MessageCircle } from "lucide-react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import {
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  MessageCircle,
+  ChevronDown,
+  Check,
+} from "lucide-react";
 import { contactData } from "@/data/contact";
 
 interface FormState {
@@ -13,20 +22,68 @@ interface FormState {
   honeypot: string;
 }
 
-const initialFormState: FormState = {
-  name: "",
-  email: "",
-  phone: "",
-  projectType: "Développement Web",
-  message: "",
-  honeypot: "",
-};
+const PROJECT_TYPES = [
+  "Site Web & E-commerce",
+  "Application Mobile",
+  "Cloud & Hébergement",
+  "Design UI/UX",
+  "Montage Vidéo",
+  "Autre demande",
+];
 
-export function ContactForm() {
-  const [formData, setFormData] = useState<FormState>(initialFormState);
+function ContactFormInner() {
+  const searchParams = useSearchParams();
+  const initialService = searchParams.get("service") || "";
+
+  const matchedType =
+    PROJECT_TYPES.find(
+      (type) =>
+        type.toLowerCase() === initialService.toLowerCase() ||
+        type.toLowerCase().includes(initialService.toLowerCase()) ||
+        initialService.toLowerCase().includes(type.toLowerCase())
+    ) || PROJECT_TYPES[0];
+
+  const [formData, setFormData] = useState<FormState>({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: matchedType,
+    message: "",
+    honeypot: "",
+  });
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+
+  // Auto select from query param when available
+  useEffect(() => {
+    if (initialService) {
+      const found = PROJECT_TYPES.find(
+        (type) =>
+          type.toLowerCase() === initialService.toLowerCase() ||
+          type.toLowerCase().includes(initialService.toLowerCase()) ||
+          initialService.toLowerCase().includes(type.toLowerCase())
+      );
+      if (found) {
+        setFormData((prev) => ({ ...prev, projectType: found }));
+      }
+    }
+  }, [initialService]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const validate = () => {
     const errs: Partial<Record<keyof FormState, string>> = {};
@@ -57,11 +114,11 @@ export function ContactForm() {
     const cleanPhone = contactData.whatsapp.replace(/[^0-9]/g, "");
     const text = encodeURIComponent(
       `*Demande de Contact — B-Tech Company*\n\n` +
-      `👤 *Nom* : ${formData.name.trim()}\n` +
-      `📧 *Email* : ${formData.email.trim()}\n` +
-      `📞 *Téléphone* : ${formData.phone.trim() || "Non renseigné"}\n` +
-      `📌 *Type de projet* : ${formData.projectType}\n\n` +
-      `💬 *Message* :\n${formData.message.trim()}`
+        `👤 *Nom* : ${formData.name.trim()}\n` +
+        `📧 *Email* : ${formData.email.trim()}\n` +
+        `📞 *Téléphone* : ${formData.phone.trim() || "Non renseigné"}\n` +
+        `📌 *Type de projet* : ${formData.projectType}\n\n` +
+        `💬 *Message* :\n${formData.message.trim()}`
     );
     window.open(`https://wa.me/${cleanPhone}?text=${text}`, "_blank");
   };
@@ -86,16 +143,27 @@ export function ContactForm() {
 
       if (!response.ok || !data.success) {
         setStatus("error");
-        setErrorMessage(data.error || "Une erreur est survenue lors de l'envoi de votre message.");
+        setErrorMessage(
+          data.error || "Une erreur est survenue lors de l'envoi de votre message."
+        );
         return;
       }
 
       setStatus("success");
-      setFormData(initialFormState);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        projectType: PROJECT_TYPES[0],
+        message: "",
+        honeypot: "",
+      });
       setErrors({});
     } catch {
       setStatus("error");
-      setErrorMessage("Impossible de contacter le serveur. Veuillez vérifier votre connexion ou nous contacter directement sur WhatsApp.");
+      setErrorMessage(
+        "Impossible de contacter le serveur. Veuillez vérifier votre connexion ou nous contacter directement sur WhatsApp."
+      );
     }
   };
 
@@ -141,11 +209,13 @@ export function ContactForm() {
           {status === "error" && (
             <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 flex items-start gap-3 text-red-700 dark:text-red-300 text-sm">
               <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-              <span>{errorMessage || "Une erreur est survenue lors de l'envoi. Veuillez réessayer."}</span>
+              <span>
+                {errorMessage || "Une erreur est survenue lors de l'envoi. Veuillez réessayer."}
+              </span>
             </div>
           )}
 
-          {/* Hidden honeypot field for bot spam detection */}
+          {/* Hidden honeypot field */}
           <div className="hidden" aria-hidden="true">
             <input
               type="text"
@@ -160,7 +230,10 @@ export function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Nom */}
             <div className="space-y-1.5">
-              <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
+              <label
+                htmlFor="contact-name"
+                className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300"
+              >
                 Nom complet <span className="text-red-500">*</span>
               </label>
               <input
@@ -181,7 +254,10 @@ export function ContactForm() {
 
             {/* Email */}
             <div className="space-y-1.5">
-              <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
+              <label
+                htmlFor="contact-email"
+                className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300"
+              >
                 Adresse Email <span className="text-red-500">*</span>
               </label>
               <input
@@ -204,7 +280,10 @@ export function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Téléphone */}
             <div className="space-y-1.5">
-              <label htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
+              <label
+                htmlFor="contact-phone"
+                className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300"
+              >
                 Téléphone
               </label>
               <input
@@ -218,32 +297,65 @@ export function ContactForm() {
               />
             </div>
 
-            {/* Type de projet */}
-            <div className="space-y-1.5">
-              <label htmlFor="contact-project-type" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
+            {/* Type de projet (Combobox Sur-Mesure Moderne) */}
+            <div className="space-y-1.5 relative" ref={dropdownRef}>
+              <label
+                htmlFor="contact-project-type"
+                className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300"
+              >
                 Type de projet
               </label>
-              <select
+              <button
                 id="contact-project-type"
+                type="button"
                 disabled={isLoading}
-                value={formData.projectType}
-                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 cursor-pointer disabled:opacity-50"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-800/80 text-sm text-slate-900 dark:text-white flex items-center justify-between cursor-pointer hover:border-blue-500 dark:hover:border-cyan-400 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-400 transition-colors disabled:opacity-50"
               >
-                <option value="Développement Web">Développement d&apos;application Web</option>
-                <option value="Développement Mobile">Développement Mobile (iOS/Android)</option>
-                <option value="Création de Site Web">Création de Site Web</option>
-                <option value="Développement de Logiciel">Développement de Logiciel métier</option>
-                <option value="Design Graphique">Design Graphique & Visuels</option>
-                <option value="Solutions Numériques">Solutions Numériques sur mesure</option>
-                <option value="Autre">Autre demande</option>
-              </select>
+                <span className="font-medium truncate">{formData.projectType}</span>
+                <ChevronDown
+                  className={`w-4 h-4 text-slate-400 dark:text-zinc-400 transition-transform duration-200 shrink-0 ${
+                    isDropdownOpen ? "rotate-180 text-blue-600 dark:text-cyan-400" : ""
+                  }`}
+                />
+              </button>
+
+              {/* Dynamic Dropdown List */}
+              {isDropdownOpen && (
+                <div className="absolute left-0 right-0 top-full mt-1.5 rounded-xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/15 shadow-2xl z-50 p-1.5 space-y-1 backdrop-blur-xl animate-in fade-in duration-150">
+                  {PROJECT_TYPES.map((type) => {
+                    const isSelected = formData.projectType === type;
+                    return (
+                      <div
+                        key={type}
+                        onClick={() => {
+                          setFormData({ ...formData, projectType: type });
+                          setIsDropdownOpen(false);
+                        }}
+                        className={`px-3.5 py-2.5 rounded-lg text-sm font-medium flex items-center justify-between cursor-pointer transition-colors ${
+                          isSelected
+                            ? "bg-blue-50 dark:bg-cyan-500/15 text-blue-600 dark:text-cyan-300"
+                            : "text-slate-700 dark:text-zinc-200 hover:bg-slate-100 dark:hover:bg-white/5"
+                        }`}
+                      >
+                        <span>{type}</span>
+                        {isSelected && (
+                          <Check className="w-4 h-4 text-blue-600 dark:text-cyan-400 shrink-0" />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
 
           {/* Message */}
           <div className="space-y-1.5">
-            <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
+            <label
+              htmlFor="contact-message"
+              className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300"
+            >
               Votre Message <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -295,5 +407,19 @@ export function ContactForm() {
         </form>
       )}
     </div>
+  );
+}
+
+export function ContactForm() {
+  return (
+    <Suspense
+      fallback={
+        <div className="rounded-3xl p-8 bg-white/80 dark:bg-zinc-900/80 border border-slate-200/80 dark:border-white/10 text-center text-sm text-slate-500">
+          Chargement du formulaire...
+        </div>
+      }
+    >
+      <ContactFormInner />
+    </Suspense>
   );
 }

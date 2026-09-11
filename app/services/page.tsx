@@ -35,12 +35,20 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Main Services Detailed Grid */}
-      <section className="py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.map((service) => (
-            <ServiceCard key={service.id} service={service} showFullDetails={true} />
-          ))}
+      {/* Main Services Detailed Grid — 2 colonnes par ligne avec centrage de la 5ème carte */}
+      <section className="py-16 lg:py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+          {servicesData.map((service, i) => {
+            const isLastOdd = i === servicesData.length - 1 && servicesData.length % 2 !== 0;
+            return (
+              <div
+                key={service.id}
+                className={isLastOdd ? "md:col-span-2 md:max-w-xl md:mx-auto w-full" : "w-full"}
+              >
+                <ServiceCard service={service} />
+              </div>
+            );
+          })}
         </div>
       </section>
 

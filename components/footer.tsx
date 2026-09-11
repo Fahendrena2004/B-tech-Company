@@ -28,7 +28,7 @@ export function Footer() {
         >
           <path
             d="M0,0 C300,120 900,120 1200,0 L1200,0 L0,0 Z"
-            className="fill-white dark:fill-slate-900"
+            className="fill-white dark:fill-[#081A33]"
           ></path>
         </svg>
       </div>

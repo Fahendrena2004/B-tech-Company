@@ -26,12 +26,11 @@ interface QuoteState {
 }
 
 const projectOptions = [
-  "Site Web",
-  "Application Web",
+  "Site Web & E-commerce",
   "Application Mobile",
-  "Logiciel sur mesure",
-  "Design Graphique",
-  "E-commerce",
+  "Cloud & Hébergement",
+  "Design UI/UX",
+  "Montage Vidéo",
   "Autre solution numérique",
 ];
 

@@ -15,38 +15,59 @@ export default function HomePage() {
       {/* 1. Hero Section */}
       <Hero />
 
-      {/* 2. Services Section */}
-      <section className="relative py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-cyan-500/20">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Nos Domaines d&apos;Expertise</span>
+      {/* 2. Services Section — background strip + 2 colonnes + scroll animation */}
+      <section className="relative py-24 lg:py-32 w-full overflow-hidden">
+        {/* ── Background strip : pleine largeur mais alternatif sur les côtés ── */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 left-[2%] right-[2%] sm:left-[3%] sm:right-[3%] rounded-3xl
+            bg-slate-100/80 dark:bg-white/[0.03]
+            border border-slate-200/60 dark:border-white/[0.06]
+            backdrop-blur-sm pointer-events-none"
+        />
+
+        <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-12 w-full">
+          {/* En-tête */}
+          <div className="text-center max-w-2xl mx-auto space-y-4 mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-cyan-300 border border-blue-200 dark:border-cyan-500/20">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Nos Domaines d&apos;Expertise</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              Nos <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Services</span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-300 leading-relaxed">
+              B-Tech Company propose un éventail complet de prestations technologiques pour répondre aux exigences numériques des entreprises et particuliers.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Nos <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Services</span>
-          </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-300">
-            B-Tech Company propose un éventail complet de prestations technologiques pour répondre aux exigences numériques des entreprises et particuliers.
-          </p>
-        </div>
 
-        {/* Services Grid (6 cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {servicesData.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
+          {/* Grille 2 colonnes avec centrage automatique de la dernière carte si impaire */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+            {servicesData.map((service, i) => {
+              const isLastOdd = i === servicesData.length - 1 && servicesData.length % 2 !== 0;
+              return (
+                <div
+                  key={service.id}
+                  className={isLastOdd ? "md:col-span-2 md:max-w-xl md:mx-auto w-full" : "w-full"}
+                >
+                  <ServiceCard service={service} />
+                </div>
+              );
+            })}
+          </div>
 
-        <div className="text-center mt-12">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-[24px] font-semibold text-sm text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-zinc-900 border border-blue-200 dark:border-white/10 hover:bg-blue-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            <span>Voir le détail de tous nos services</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="text-center mt-14">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-white/5 border border-blue-200 dark:border-white/10 hover:bg-blue-100 dark:hover:bg-white/10 transition-colors shadow-sm"
+            >
+              <span>Voir tous nos services</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
+
 
       {/* 3. Pourquoi B-Tech Section */}
       <WhyUs />

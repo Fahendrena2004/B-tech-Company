@@ -66,8 +66,8 @@ export function Navbar() {
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#FFFDF9] border-b border-[#F2E9D6] shadow-sm"
-          : "bg-[#FFFDF9] border-b border-[#F2E9D6]/60"
+          ? "bg-white/90 dark:bg-[#081A33]/90 border-b border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md"
+          : "bg-white/70 dark:bg-[#081A33]/70 border-b border-slate-200/50 dark:border-white/5 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,10 +88,10 @@ export function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 bg-clip-text text-transparent">
-                B-Tech <span className="text-blue-600 font-black">Company</span>
+              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
+                B-Tech <span className="text-blue-600 dark:text-cyan-400 font-black">Company</span>
               </span>
-              <span className="text-[10px] uppercase font-semibold tracking-widest text-slate-500">
+              <span className="text-[10px] uppercase font-semibold tracking-widest text-slate-500 dark:text-zinc-400">
                 Digital Solutions
               </span>
             </div>
@@ -105,17 +105,17 @@ export function Navbar() {
                 <div key={link.href} className="relative group">
                   <Link
                     href={link.href}
-                    className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 inline-block ${
+                    className={`relative px-3.5 py-2 text-sm font-medium rounded-lg transition-colors duration-200 inline-block ${
                       isActive
-                        ? "text-[#38BDF8] font-semibold"
-                        : "text-[#0F2747] hover:text-[#38BDF8]"
+                        ? "text-blue-600 dark:text-cyan-400 font-semibold"
+                        : "text-slate-700 dark:text-zinc-200 hover:text-blue-600 dark:hover:text-cyan-300"
                     }`}
                   >
                     {link.label}
                     {isActive && (
                       <motion.span
                         layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#38BDF8] rounded-full"
+                        className="absolute bottom-0 left-2 right-2 h-0.5 bg-blue-600 dark:bg-cyan-400 rounded-full"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}

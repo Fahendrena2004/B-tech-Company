@@ -144,19 +144,19 @@ export function Hero() {
               </svg>
             </div>
 
-            {/* Main Visual Image - Photo flottante */}
+            {/* Main Visual Image - Photo de présentation hero */}
             <motion.div
-              animate={{ y: [-10, 10, -10] }}
+              animate={{ y: [-8, 8, -8] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="relative z-10 w-full max-w-md xl:max-w-lg shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] rounded-[2.5rem] overflow-hidden"
+              className="relative z-10 w-full max-w-lg xl:max-w-xl shadow-2xl dark:shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-[2rem] overflow-hidden border border-slate-200/80 dark:border-white/15 bg-slate-900"
             >
-              <div className="relative w-full" style={{ paddingBottom: '100%' }}>
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
                 <Image
                   src="/images/Acceuil.jpeg"
                   alt="B-Tech Company - Solutions Numériques"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 45vw"
+                  className="object-cover"
                   priority
                 />
               </div>
