@@ -89,7 +89,7 @@ export const portfolioProjects: ProjectItem[] = [
     isPlaceholder: false,
     status: "En développement",
     gradient: "from-teal-600/30 via-emerald-600/20 to-cyan-500/20",
-    imageUrl: "/images/portoflio/Hotel.jpg",
+    imageUrl: "/images/portoflio/LocationAppartement.png",
     aspectRatio: "video"
   },
   {
